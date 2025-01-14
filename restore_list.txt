@@ -1,0 +1,1952 @@
+;
+; Archive created at 2025-01-09 16:19:14 UTC
+;     dbname: pretium3
+;     TOC Entries: 1941
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 14.15
+;     Dumped by pg_dump version: 14.15
+;
+;
+; Selected TOC Entries:
+;
+9; 2615 24577 SCHEMA - auditoria postgres
+8; 2615 24578 SCHEMA - categoria_funcional postgres
+32; 2615 24579 SCHEMA - cep postgres
+11; 2615 24580 SCHEMA - escala postgres
+20; 2615 24581 SCHEMA - esocial postgres
+21; 2615 24582 SCHEMA - esocial_historico postgres
+6; 2615 24583 SCHEMA - estagiario postgres
+12; 2615 24584 SCHEMA - folha postgres
+16; 2615 24585 SCHEMA - log postgres
+23; 2615 24586 SCHEMA - ponto_eletronico postgres
+13; 2615 24587 SCHEMA - previdencia postgres
+3; 2615 2200 SCHEMA - public postgres;
+6315; 0 0 COMMENT - SCHEMA public postgres
+25; 2615 24588 SCHEMA - rescisao postgres
+36; 2615 24589 SCHEMA - seguranca postgres
+27; 2615 24590 SCHEMA - setor postgres
+28; 2615 24591 SCHEMA - vinculo postgres
+1463; 1247 24593 TYPE ponto_eletronico status_justificativa_registro_ponto postgres
+694; 1255 24599 FUNCTION public chk_validar_cnpj_cpf(text) postgres
+1466; 1247 24601 DOMAIN public cpf_cnpj postgres
+698; 1255 24603 FUNCTION public chk_validar_periodo(text) postgres
+1470; 1247 24605 DOMAIN public periodo postgres
+699; 1255 24608 FUNCTION auditoria assert(boolean, character varying) postgres
+700; 1255 24609 FUNCTION auditoria tgf_register_log() postgres
+710; 1255 24611 FUNCTION categoria_funcional buscar_detalhe_reajuste_salarial(bigint) postgres
+711; 1255 24612 FUNCTION categoria_funcional calcular_reajuste_nivel_cargo(bigint[], numeric) postgres
+714; 1255 24613 FUNCTION categoria_funcional concluir_reajuste_nivel_cargo(bigint[], numeric) postgres
+715; 1255 24614 FUNCTION categoria_funcional obter_descricao_cargo_nivel(bigint) postgres
+716; 1255 24615 FUNCTION categoria_funcional obter_qtde_ocupada_cargo(bigint) postgres
+717; 1255 24616 FUNCTION categoria_funcional obter_servidores_por_cargo(bigint) postgres
+718; 1255 24617 PROCEDURE categoria_funcional proc_concluir_reajuste_nivel_cargo(bigint[], numeric, bigint) postgres
+719; 1255 24618 PROCEDURE categoria_funcional proc_reverter_ultimo_reajuste_nivel_cargo() postgres
+720; 1255 24619 FUNCTION escala proc_010_processar_escala(bigint) postgres
+721; 1255 24621 FUNCTION esocial criar_eventos_trabalhador_cadastro_inicial(bigint) postgres
+722; 1255 24623 FUNCTION esocial criar_lote() postgres
+723; 1255 24625 FUNCTION esocial criar_lote_por_lista_de_ocorrencias(text) postgres
+712; 1255 24626 FUNCTION esocial criar_lote_por_tipo_de_evento(text) postgres
+713; 1255 24627 FUNCTION esocial s_1010_criar(bigint) postgres
+724; 1255 24629 FUNCTION esocial tgf_rubrica_esocial_ftg() postgres
+725; 1255 24630 FUNCTION esocial_historico converte_tabela_para_tx2(text, text) postgres
+726; 1255 24631 FUNCTION esocial_historico s_1010_calcular_diferenca(bigint) postgres
+727; 1255 24632 FUNCTION esocial_historico s_1010_criar(bigint) postgres
+728; 1255 24634 FUNCTION esocial_historico s_1010_enviado_com_sucesso(integer) postgres
+729; 1255 24635 FUNCTION esocial_historico s_1010_excluir(bigint) postgres
+731; 1255 24636 FUNCTION esocial_historico s_1010_tx2(bigint) postgres
+732; 1255 24637 FUNCTION esocial_historico s_2200_criar(bigint) postgres
+733; 1255 24639 FUNCTION folha analitico_inss(bigint, integer, integer) postgres
+858; 1255 29696 FUNCTION folha analitico_iper(integer, integer) postgres
+734; 1255 24640 FUNCTION folha analitico_iper(bigint, bigint) postgres
+735; 1255 24642 FUNCTION folha calc_010_calcular_folha(bigint, bigint) postgres
+736; 1255 24644 FUNCTION folha calc_020_buscar_vinculos() postgres
+737; 1255 24646 PROCEDURE folha calc_051_credito_para_terceiro() postgres
+738; 1255 24647 PROCEDURE folha calc_200_previdencia() postgres
+739; 1255 24649 PROCEDURE folha calc_300_irrf() postgres
+740; 1255 24651 PROCEDURE folha calc_400_pensao() postgres
+741; 1255 24652 FUNCTION folha calc_aux_fatorar_formula(bigint, bigint, bigint, text, bigint[], boolean, boolean) postgres
+742; 1255 24653 FUNCTION folha calc_aux_fatorarformula_p(bigint, bigint, bigint, text, bigint[], boolean, boolean) postgres
+743; 1255 24654 FUNCTION folha calc_aux_obter_valor_da_variavel(text, text[]) postgres
+860; 1255 29784 FUNCTION folha calcular_evento_consolidado(bigint, integer, integer) postgres
+744; 1255 24655 FUNCTION folha gerar_codigo_rubrica() postgres
+745; 1255 24656 FUNCTION folha obter_data_inicio_vinculo(bigint) postgres
+746; 1255 24657 FUNCTION folha obter_descricao_folha(bigint, public.periodo) postgres
+747; 1255 24658 FUNCTION folha obter_ficha_financeira(bigint, bigint, bigint[]) postgres
+730; 1255 24659 FUNCTION folha obter_periodo_folha() postgres
+687; 1255 24660 FUNCTION folha obter_periodo_pagamento(date) postgres
+688; 1255 24661 FUNCTION folha obter_periodo_pagamento_atual() postgres
+689; 1255 24662 FUNCTION folha obter_remuneracoes_portal_transparencia_por_folha(bigint) postgres
+748; 1255 24664 FUNCTION folha obter_servidores_por_folha_processada(bigint, bigint[]) postgres
+749; 1255 24665 FUNCTION folha obter_status_folha(bigint) postgres
+750; 1255 24666 FUNCTION folha obter_ultima_folha() postgres
+751; 1255 24667 FUNCTION folha obter_ultima_folha_encerrada() postgres
+752; 1255 24668 FUNCTION folha obter_ultima_folha_mensal_aberta() postgres
+753; 1255 24669 PROCEDURE folha proc_010_05_carregar_lancamento_automatico_ferias() postgres
+754; 1255 24671 PROCEDURE folha proc_010_06_carregar_lancamento_automatico_faltas() postgres
+755; 1255 24672 PROCEDURE folha proc_010_07_carregar_lancamento_automatico_afastamentos() postgres
+756; 1255 24674 PROCEDURE folha proc_010_08_carregar_lancamento_automatico_escalas() postgres
+757; 1255 24675 PROCEDURE folha proc_010_09_carregar_lancamento_automatico_vantagens() postgres
+758; 1255 24676 PROCEDURE folha proc_010_10_carregar_lancamento_automatico_credito_terceiros() postgres
+759; 1255 24677 PROCEDURE folha proc_010_11_carregar_lancamento_automatico_pensoes() postgres
+760; 1255 24678 PROCEDURE folha proc_010_12_carregar_lancamento_automatico_substituicoes() postgres
+761; 1255 24680 FUNCTION folha proc_010_carregar_lancamento_automatico(bigint, bigint) postgres
+763; 1255 24682 PROCEDURE folha proc_010_carregar_lancamento_automatico_incluir(bigint, bigint, text) postgres
+764; 1255 24683 PROCEDURE folha proc_flh_anular_folha(bigint) postgres
+765; 1255 24684 PROCEDURE folha proc_flh_encerrar_folha(bigint) postgres
+766; 1255 24686 PROCEDURE folha proc_flh_fechar_abrir_folha(bigint, boolean) postgres
+767; 1255 24687 FUNCTION folha proc_listar_lancamentos_processados_folhas_abertas_por_vinculo(bigint) postgres
+768; 1255 24688 FUNCTION folha proc_listar_servidores_para_folha(bigint) postgres
+861; 1255 29778 FUNCTION folha rel_demonstrativo_pagamento_estagiarios(bigint) postgres
+769; 1255 24690 FUNCTION folha rel_gerar_contracheque(bigint, bigint, text) postgres
+762; 1255 24692 FUNCTION folha rel_gerar_ficha_financeira(integer, integer, integer, boolean) postgres
+771; 1255 24694 PROCEDURE folha rel_tela_folha_detalhamento(integer) postgres
+772; 1255 24695 FUNCTION folha status_abertura_folha(integer) postgres
+773; 1255 24696 FUNCTION folha tgf_ajusta_ordem_nas_rubricas() postgres
+774; 1255 24697 FUNCTION folha tgf_check_deadlock_em_incidencia_de_rubricas() postgres
+775; 1255 24698 FUNCTION folha tgf_validar_cadastro_abertura_folha() postgres
+776; 1255 24699 FUNCTION folha tgf_validar_cadastro_tabela_irpf() postgres
+777; 1255 24700 FUNCTION folha tgf_validar_cadastro_tabela_previdencia() postgres
+778; 1255 24701 FUNCTION folha tgf_validar_exclusao_folha() postgres
+779; 1255 24702 FUNCTION folha tgf_validar_inclusao_exclusao_vinculo_funcional_na_folha() postgres
+780; 1255 24703 FUNCTION folha tgf_validar_qtde_eventos_lancados_por_folha() postgres
+781; 1255 24704 FUNCTION folha valida_novo_status_folha() postgres
+782; 1255 24705 FUNCTION log assert(boolean, character varying) postgres
+783; 1255 24706 FUNCTION log register_log() postgres
+784; 1255 24708 FUNCTION ponto_eletronico chk_validar_usuario_rh() postgres
+785; 1255 24709 FUNCTION ponto_eletronico obter_chefe(public.periodo, bigint, bigint) postgres
+786; 1255 24710 FUNCTION ponto_eletronico obter_chefe_do_setor_no_periodo(bigint, public.periodo) postgres
+787; 1255 24711 FUNCTION ponto_eletronico obter_jornadas_trabalho_vinculo_json(bigint) postgres
+788; 1255 24712 FUNCTION ponto_eletronico obter_max_solicitacao_diaria_regime_trabalho(bigint) postgres
+789; 1255 24713 FUNCTION ponto_eletronico obter_setores_subordinados(bigint) postgres
+790; 1255 24714 FUNCTION ponto_eletronico obter_setores_subordinados(public.periodo) postgres
+791; 1255 24715 FUNCTION ponto_eletronico obter_total_solicitacoes_pendentes(bigint) postgres
+792; 1255 24716 PROCEDURE ponto_eletronico proc_010_analisar_frequencia(public.periodo, bigint, bigint) postgres
+793; 1255 24718 FUNCTION ponto_eletronico proc_010_analisar_periodo_justificativa_ponto(bigint, date, date) postgres
+794; 1255 24720 PROCEDURE ponto_eletronico proc_010_fechar_frequencia_setor(public.periodo, bigint) postgres
+770; 1255 24721 PROCEDURE ponto_eletronico proc_010_processar_frequencia(public.periodo, bigint) postgres
+690; 1255 24723 PROCEDURE ponto_eletronico proc_010_reabrir_frequencia_setor(public.periodo, bigint) postgres
+795; 1255 24724 FUNCTION ponto_eletronico proc_gerar_registros_de_ponto(integer, bigint) postgres
+796; 1255 24725 FUNCTION ponto_eletronico proc_gerar_registros_de_ponto(public.periodo, bigint) postgres
+797; 1255 24726 FUNCTION ponto_eletronico tgf_atualizar_saldo_banco_hora() postgres
+798; 1255 24727 FUNCTION ponto_eletronico tgf_justificativa_periodo_fechado() postgres
+799; 1255 24728 FUNCTION ponto_eletronico tgf_retira_vinculo_regime_trabalho() postgres
+800; 1255 24729 FUNCTION ponto_eletronico tgf_sobreposicao_jornada_trabalho() postgres
+801; 1255 24730 FUNCTION ponto_eletronico tgf_sobreposicao_regime_trabalho() postgres
+802; 1255 24731 FUNCTION public atualizar_sequences_esquema(text) postgres
+803; 1255 24732 FUNCTION public chk_ajustar_versao() postgres
+804; 1255 24733 FUNCTION public chk_retirar_acentuacao(text) postgres
+805; 1255 24734 FUNCTION public chk_validar_cpf(text) postgres
+806; 1255 24735 FUNCTION public formatar_cpf(public.cpf_cnpj) postgres
+807; 1255 24736 PROCEDURE public imprimir_notice(text) postgres
+808; 1255 24737 FUNCTION public obter_boolean_to_char(boolean) postgres
+809; 1255 24738 FUNCTION public obter_cpf_cnpj_formatado(character varying) postgres
+810; 1255 24739 FUNCTION public obter_data_formatada(date) postgres
+811; 1255 24740 FUNCTION public obter_dia_semana_por_extenso(date) postgres
+812; 1255 24741 FUNCTION public obter_interval_para_minutos(interval) postgres
+813; 1255 24742 FUNCTION public obter_minutos_para_interval(integer) postgres
+814; 1255 24743 FUNCTION public obter_parametro(text) postgres
+691; 1255 24744 FUNCTION public obter_periodo(date) postgres
+692; 1255 24745 FUNCTION public obter_periodo_anterior(date) postgres
+815; 1255 24746 FUNCTION public obter_periodo_anterior(integer) postgres
+852; 1255 24747 FUNCTION public obter_periodo_formatado(public.periodo) postgres
+816; 1255 24748 FUNCTION public obter_periodo_por_extenso(public.periodo) postgres
+817; 1255 24749 FUNCTION public obter_periodo_posterior(text) postgres
+818; 1255 24750 FUNCTION public obter_primeiro_dia_mes(integer) postgres
+819; 1255 24751 FUNCTION public obter_primeiro_dia_mes(text) postgres
+820; 1255 24752 FUNCTION public obter_ultimo_dia_mes(integer) postgres
+821; 1255 24753 FUNCTION public obter_ultimo_dia_mes(text) postgres
+822; 1255 24754 FUNCTION public proc_listar_documentacao_pessoa(bigint) postgres
+823; 1255 24755 FUNCTION public processar_notificacoes(public.periodo) postgres
+824; 1255 24757 FUNCTION public tgf_ajusta_endereco_principal_da_pessoa() postgres
+825; 1255 24758 FUNCTION public tgf_ajustar_versao() postgres
+826; 1255 24759 FUNCTION public tgf_excluir_arquivo() postgres
+693; 1255 24760 FUNCTION public tgf_set_nome_sem_acento() postgres
+701; 1255 24761 FUNCTION public vericar_se_pessoa_possui_deficiencia(bigint, bigint) postgres
+827; 1255 24762 FUNCTION seguranca obter_permissoes_usuario(bigint) postgres
+828; 1255 24763 FUNCTION seguranca set_usario_log(text, text, boolean) postgres
+829; 1255 24764 FUNCTION setor obtem_setores_subordinados(integer) postgres
+830; 1255 24765 FUNCTION vinculo buscar_cedencia_ativa_por_vinculo(bigint) postgres
+831; 1255 24766 FUNCTION vinculo buscar_vinculos_por_tipo_cedencia(text) postgres
+832; 1255 24767 FUNCTION vinculo gerar_matricula(bigint) postgres
+833; 1255 24768 FUNCTION vinculo obter_cargos_vinculo(bigint) postgres
+834; 1255 24769 FUNCTION vinculo obter_cedencia_ativa_por_vinculo(bigint) postgres
+835; 1255 24770 FUNCTION vinculo obter_data_admissao(bigint) postgres
+836; 1255 24771 FUNCTION vinculo obter_data_referencia_fim_ferias(bigint) postgres
+837; 1255 24772 FUNCTION vinculo obter_data_referencia_inicio_ferias(bigint) postgres
+838; 1255 24773 FUNCTION vinculo obter_ferias_saldo(integer, integer) postgres
+839; 1255 24774 FUNCTION vinculo obter_pensionista(bigint) postgres
+840; 1255 24775 FUNCTION vinculo obter_periodo_conversao_pecunia() postgres
+841; 1255 24776 FUNCTION vinculo obter_vinculos_por_tipo_cedencia(text) postgres
+842; 1255 24777 FUNCTION vinculo rel_ferias_vinculo_funcional(bigint) postgres
+859; 1255 31007 FUNCTION vinculo rel_gerar_ficha_funcional(bigint) postgres
+843; 1255 24780 FUNCTION vinculo rel_gerar_margem_consignavel(bigint) postgres
+844; 1255 24782 FUNCTION vinculo tgf_exclui_lotacao() postgres
+845; 1255 24783 FUNCTION vinculo tgf_valida_lotacao() postgres
+846; 1255 24784 FUNCTION vinculo tgf_validar_cadastro_afastamento() postgres
+847; 1255 24785 FUNCTION vinculo tgf_validar_cadastro_cedencia() postgres
+848; 1255 24786 FUNCTION vinculo tgf_validar_cadastro_credito_para_terceiro() postgres
+849; 1255 24787 FUNCTION vinculo tgf_validar_cadastro_dependente() postgres
+850; 1255 24788 FUNCTION vinculo tgf_validar_cadastro_estagio() postgres
+851; 1255 24789 FUNCTION vinculo tgf_validar_cadastro_ferias() postgres
+853; 1255 24790 FUNCTION vinculo tgf_validar_cadastro_ferias_gozo() postgres
+854; 1255 24791 FUNCTION vinculo tgf_validar_cadastro_pensao() postgres
+855; 1255 24792 FUNCTION vinculo tgf_validar_cadastro_pensao_rel_pensionista() postgres
+856; 1255 24793 FUNCTION vinculo tgf_validar_cadastro_substituicao() postgres
+857; 1255 24794 FUNCTION vinculo tgf_validar_sobreposicao_ferias_gozo() postgres
+240; 1259 24795 TABLE categoria_funcional agregacao postgres
+241; 1259 24801 SEQUENCE categoria_funcional agregacao_id_seq postgres
+6316; 0 0 SEQUENCE OWNED BY categoria_funcional agregacao_id_seq postgres
+242; 1259 24802 TABLE categoria_funcional categoria postgres
+6317; 0 0 COMMENT categoria_funcional COLUMN categoria.tipo_de_provimento_do_cargo_id postgres
+6318; 0 0 COMMENT categoria_funcional COLUMN categoria.categoria_do_trabalhador_id postgres
+243; 1259 24816 VIEW categoria_funcional agregacao_view postgres
+244; 1259 24821 TABLE categoria_funcional area_atuacao postgres
+245; 1259 24824 SEQUENCE categoria_funcional area_atuacao_id_seq postgres
+6319; 0 0 SEQUENCE OWNED BY categoria_funcional area_atuacao_id_seq postgres
+246; 1259 24825 TABLE categoria_funcional cargo postgres
+247; 1259 24833 SEQUENCE categoria_funcional cargo_id_seq postgres
+6320; 0 0 SEQUENCE OWNED BY categoria_funcional cargo_id_seq postgres
+248; 1259 24834 TABLE categoria_funcional cargo_nivel postgres
+249; 1259 24837 SEQUENCE categoria_funcional cargo_nivel_id_seq postgres
+6321; 0 0 SEQUENCE OWNED BY categoria_funcional cargo_nivel_id_seq postgres
+250; 1259 24838 TABLE categoria_funcional cargo_rel_cargo_nivel postgres
+251; 1259 24841 TABLE categoria_funcional vinculo_tipo postgres
+6322; 0 0 COMMENT categoria_funcional COLUMN vinculo_tipo.codigo_tce_para_efetivo postgres
+252; 1259 24850 VIEW categoria_funcional cargo_reajuste_salarial_view postgres
+253; 1259 24855 SEQUENCE categoria_funcional cargo_rel_cargo_nivel_id_seq postgres
+6323; 0 0 SEQUENCE OWNED BY categoria_funcional cargo_rel_cargo_nivel_id_seq postgres
+254; 1259 24856 VIEW categoria_funcional cargo_rel_cargo_nivel_view postgres
+255; 1259 24861 TABLE public nivel_formacao postgres
+6324; 0 0 COMMENT public COLUMN nivel_formacao.grau_instrucao_id postgres
+256; 1259 24866 VIEW categoria_funcional cargo_view postgres
+257; 1259 24871 SEQUENCE categoria_funcional categoria_id_seq postgres
+6325; 0 0 SEQUENCE OWNED BY categoria_funcional categoria_id_seq postgres
+258; 1259 24872 TABLE categoria_funcional categoria_rubrica_padrao postgres
+259; 1259 24877 SEQUENCE categoria_funcional categoria_rubrica_padrao_id_seq postgres
+6326; 0 0 SEQUENCE OWNED BY categoria_funcional categoria_rubrica_padrao_id_seq postgres
+260; 1259 24878 TABLE folha folha_tipo postgres
+261; 1259 24891 TABLE folha rubrica postgres
+262; 1259 24903 VIEW categoria_funcional categoria_rubrica_padrao_view postgres
+263; 1259 24908 TABLE previdencia regime_previdenciario_fundo postgres
+6327; 0 0 COMMENT previdencia COLUMN regime_previdenciario_fundo.tp_plan_rp postgres
+264; 1259 24913 VIEW categoria_funcional categoria_view postgres
+265; 1259 24918 TABLE categoria_funcional reajuste_salarial postgres
+266; 1259 24923 SEQUENCE categoria_funcional reajuste_salarial_id_seq postgres
+6328; 0 0 SEQUENCE OWNED BY categoria_funcional reajuste_salarial_id_seq postgres
+267; 1259 24924 TABLE categoria_funcional reajuste_valor_nivel postgres
+268; 1259 24927 VIEW categoria_funcional reajuste_salarial_resumo_old_view postgres
+269; 1259 24932 VIEW categoria_funcional reajuste_salarial_resumo_view postgres
+270; 1259 24936 SEQUENCE categoria_funcional reajuste_valor_nivel_id_seq postgres
+6329; 0 0 SEQUENCE OWNED BY categoria_funcional reajuste_valor_nivel_id_seq postgres
+271; 1259 24937 TABLE categoria_funcional tipo_vinculo_empregaticio postgres
+272; 1259 24942 SEQUENCE categoria_funcional tipo_vinculo_empregaticio_id_seq postgres
+6330; 0 0 SEQUENCE OWNED BY categoria_funcional tipo_vinculo_empregaticio_id_seq postgres
+273; 1259 24943 SEQUENCE categoria_funcional vinculo_tipo_id_seq postgres
+6331; 0 0 SEQUENCE OWNED BY categoria_funcional vinculo_tipo_id_seq postgres
+274; 1259 24944 TABLE cep bairro postgres
+275; 1259 24949 SEQUENCE cep bairro_id_seq postgres
+6332; 0 0 SEQUENCE OWNED BY cep bairro_id_seq postgres
+276; 1259 24950 TABLE cep cidade postgres
+277; 1259 24953 SEQUENCE cep cidade_id_seq postgres
+6333; 0 0 SEQUENCE OWNED BY cep cidade_id_seq postgres
+278; 1259 24954 TABLE cep endereco postgres
+279; 1259 24959 TABLE cep estado postgres
+280; 1259 24964 TABLE cep logradouro postgres
+281; 1259 24970 TABLE cep logradouro_tipo postgres
+282; 1259 24975 VIEW cep endereco_formatado_view postgres
+283; 1259 24980 SEQUENCE cep endereco_id_seq postgres
+6334; 0 0 SEQUENCE OWNED BY cep endereco_id_seq postgres
+284; 1259 24981 SEQUENCE cep estado_id_seq postgres
+6335; 0 0 SEQUENCE OWNED BY cep estado_id_seq postgres
+285; 1259 24982 SEQUENCE cep logradouro_id_seq postgres
+6336; 0 0 SEQUENCE OWNED BY cep logradouro_id_seq postgres
+286; 1259 24983 SEQUENCE cep logradouro_tipo_id_seq postgres
+6337; 0 0 SEQUENCE OWNED BY cep logradouro_tipo_id_seq postgres
+287; 1259 24984 VIEW cep logradouro_view postgres
+288; 1259 24989 TABLE cep pais postgres
+289; 1259 24995 SEQUENCE cep pais_id_seq postgres
+6338; 0 0 SEQUENCE OWNED BY cep pais_id_seq postgres
+290; 1259 24996 VIEW cep vw_enderecos postgres
+291; 1259 25001 TABLE escala escala postgres
+292; 1259 25007 SEQUENCE escala escala_id_seq postgres
+6339; 0 0 SEQUENCE OWNED BY escala escala_id_seq postgres
+293; 1259 25008 TABLE escala escala_item postgres
+294; 1259 25014 SEQUENCE escala escala_item_id_seq postgres
+6340; 0 0 SEQUENCE OWNED BY escala escala_item_id_seq postgres
+295; 1259 25015 TABLE setor setor postgres
+296; 1259 25021 VIEW escala escala_view postgres
+297; 1259 25026 TABLE esocial afastamento_temporario_tipo postgres
+298; 1259 25031 SEQUENCE esocial afastamento_temporario_tipo_id_seq postgres
+6341; 0 0 SEQUENCE OWNED BY esocial afastamento_temporario_tipo_id_seq postgres
+299; 1259 25032 TABLE esocial campos_para_validacao postgres
+300; 1259 25037 SEQUENCE esocial campos_para_validacao_id_seq postgres
+6342; 0 0 SEQUENCE OWNED BY esocial campos_para_validacao_id_seq postgres
+301; 1259 25038 TABLE esocial categoria_do_trabalhador postgres
+302; 1259 25043 TABLE esocial classificacao_tributaria postgres
+303; 1259 25048 TABLE esocial config_data_inicio postgres
+304; 1259 25053 SEQUENCE esocial config_data_inicio_id_seq postgres
+6343; 0 0 SEQUENCE OWNED BY esocial config_data_inicio_id_seq postgres
+305; 1259 25054 TABLE esocial extensao_em_processo_cp postgres
+306; 1259 25059 TABLE esocial grau_instrucao postgres
+307; 1259 25064 TABLE esocial incidencia_tributaria_da_rubrica_cprp postgres
+308; 1259 25069 TABLE esocial incidencia_tributaria_da_rubrica_fgts postgres
+309; 1259 25074 TABLE esocial incidencia_tributaria_da_rubrica_irrf postgres
+310; 1259 25079 TABLE esocial incidencia_tributaria_da_rubrica_prev postgres
+311; 1259 25084 TABLE esocial indicativo_periodo_apuracao postgres
+312; 1259 25089 TABLE esocial lotao_tributaria postgres
+313; 1259 25094 TABLE esocial lote postgres
+314; 1259 25099 SEQUENCE esocial lote_id_seq postgres
+6344; 0 0 SEQUENCE OWNED BY esocial lote_id_seq postgres
+315; 1259 25100 TABLE esocial lotes_itens postgres
+316; 1259 25103 TABLE esocial motivo_desligamento postgres
+317; 1259 25108 TABLE esocial natureza_de_rubrica postgres
+318; 1259 25113 TABLE esocial ocorrencia postgres
+6345; 0 0 COMMENT esocial COLUMN ocorrencia.lote_id postgres
+319; 1259 25119 SEQUENCE esocial ocorrencia_id_seq postgres
+6346; 0 0 SEQUENCE OWNED BY esocial ocorrencia_id_seq postgres
+320; 1259 25120 TABLE esocial ocorrencia_rel_lote postgres
+321; 1259 25125 SEQUENCE esocial ocorrencia_rel_lote_id_seq postgres
+6347; 0 0 SEQUENCE OWNED BY esocial ocorrencia_rel_lote_id_seq postgres
+322; 1259 25126 TABLE esocial tipo_operacao postgres
+323; 1259 25131 TABLE esocial tipo_situacao_ocorrencia postgres
+324; 1259 25136 VIEW esocial ocorrencia_view postgres
+325; 1259 25141 TABLE esocial s_1010_rubrica postgres
+326; 1259 25146 TABLE esocial tipo_condicao_ingresso_imigrante postgres
+327; 1259 25151 TABLE esocial tipo_de_provimento_do_cargo postgres
+328; 1259 25156 TABLE esocial tipo_de_rubrica postgres
+329; 1259 25161 TABLE esocial tipo_tempo_residencia_imigrante postgres
+330; 1259 25166 TABLE esocial tipos_de_dependente postgres
+331; 1259 25171 TABLE esocial trabalhador_cadastro_inicial postgres
+332; 1259 25176 TABLE estagiario agente_integrador postgres
+333; 1259 25181 SEQUENCE estagiario agente_integrador_id_seq postgres
+6348; 0 0 SEQUENCE OWNED BY estagiario agente_integrador_id_seq postgres
+334; 1259 25182 TABLE estagiario instituicao_ensino postgres
+335; 1259 25187 SEQUENCE estagiario instituicao_ensino_id_seq postgres
+6349; 0 0 SEQUENCE OWNED BY estagiario instituicao_ensino_id_seq postgres
+336; 1259 25188 TABLE folha folha postgres
+337; 1259 25194 SEQUENCE folha folha_id_seq postgres
+6350; 0 0 SEQUENCE OWNED BY folha folha_id_seq postgres
+338; 1259 25195 TABLE folha folha_rel_vinculo_funcional postgres
+339; 1259 25198 SEQUENCE folha folha_rel_vinculo_funcional_id_seq postgres
+6351; 0 0 SEQUENCE OWNED BY folha folha_rel_vinculo_funcional_id_seq postgres
+340; 1259 25199 TABLE folha folha_status postgres
+341; 1259 25205 SEQUENCE folha folha_status_id_seq postgres
+6352; 0 0 SEQUENCE OWNED BY folha folha_status_id_seq postgres
+342; 1259 25206 TABLE seguranca usuario postgres
+343; 1259 25211 VIEW folha folha_status_view postgres
+344; 1259 25215 TABLE folha folha_tipo_arquivo postgres
+345; 1259 25221 SEQUENCE folha folha_tipo_arquivo_id_seq postgres
+6353; 0 0 SEQUENCE OWNED BY folha folha_tipo_arquivo_id_seq postgres
+346; 1259 25222 SEQUENCE folha folha_tipo_id_seq postgres
+6354; 0 0 SEQUENCE OWNED BY folha folha_tipo_id_seq postgres
+347; 1259 25223 TABLE folha folha_tipo_rel_folha_tipo_arquivo postgres
+348; 1259 25226 SEQUENCE folha folha_tipo_rel_folha_tipo_arquivo_id_seq postgres
+6355; 0 0 SEQUENCE OWNED BY folha folha_tipo_rel_folha_tipo_arquivo_id_seq postgres
+349; 1259 25227 VIEW folha folha_tipo_rel_folha_tipo_arquivo_view postgres
+350; 1259 25231 TABLE folha folha_tipo_rel_folha_tipo_relatorio postgres
+351; 1259 25234 SEQUENCE folha folha_tipo_rel_folha_tipo_relatorio_id_seq postgres
+6356; 0 0 SEQUENCE OWNED BY folha folha_tipo_rel_folha_tipo_relatorio_id_seq postgres
+352; 1259 25235 TABLE folha folha_tipo_relatorio postgres
+353; 1259 25241 VIEW folha folha_tipo_rel_folha_tipo_relatorio_view postgres
+354; 1259 25245 SEQUENCE folha folha_tipo_relatorio_id_seq postgres
+6357; 0 0 SEQUENCE OWNED BY folha folha_tipo_relatorio_id_seq postgres
+355; 1259 25246 TABLE folha iper_folhas postgres
+356; 1259 25251 VIEW folha folha_tipo_view postgres
+357; 1259 25256 VIEW folha folha_view postgres
+358; 1259 25261 TABLE folha fonte_recurso postgres
+359; 1259 25266 SEQUENCE folha fonte_recurso_id_seq postgres
+6358; 0 0 SEQUENCE OWNED BY folha fonte_recurso_id_seq postgres
+360; 1259 25267 TABLE folha grupo_rubrica postgres
+361; 1259 25270 SEQUENCE folha grupo_rubrica_id_seq postgres
+6359; 0 0 SEQUENCE OWNED BY folha grupo_rubrica_id_seq postgres
+362; 1259 25271 TABLE folha historico_financeiro postgres
+363; 1259 25276 TABLE folha historico_financeiro_resumo postgres
+364; 1259 25281 TABLE public pessoa postgres
+365; 1259 25290 TABLE vinculo vinculo_cargo postgres
+6360; 0 0 COMMENT vinculo COLUMN vinculo_cargo.data_inicio_abono_permanencia postgres
+366; 1259 25297 TABLE vinculo vinculo_funcional postgres
+367; 1259 25304 VIEW folha historico_financeiro_resumo_view postgres
+368; 1259 25309 SEQUENCE folha iper_folhas_id_seq postgres
+6361; 0 0 SEQUENCE OWNED BY folha iper_folhas_id_seq postgres
+369; 1259 25310 TABLE folha lancamento postgres
+370; 1259 25320 TABLE folha lancamento_automatico_excluido postgres
+371; 1259 25323 SEQUENCE folha lancamento_automatico_excluido_id_seq postgres
+6362; 0 0 SEQUENCE OWNED BY folha lancamento_automatico_excluido_id_seq postgres
+372; 1259 25324 TABLE folha lancamento_processado postgres
+373; 1259 25329 VIEW folha lancamento_financeiro_processado_view postgres
+374; 1259 25334 SEQUENCE folha lancamento_id_seq postgres
+6363; 0 0 SEQUENCE OWNED BY folha lancamento_id_seq postgres
+375; 1259 25335 TABLE folha lancamento_periodos_nao_processar postgres
+376; 1259 25338 SEQUENCE folha lancamento_processado_id_seq postgres
+6364; 0 0 SEQUENCE OWNED BY folha lancamento_processado_id_seq postgres
+377; 1259 25339 TABLE folha lancamento_processado_resumo postgres
+378; 1259 25344 SEQUENCE folha lancamento_processado_resumo_id_seq postgres
+6365; 0 0 SEQUENCE OWNED BY folha lancamento_processado_resumo_id_seq postgres
+379; 1259 25345 VIEW folha lancamento_processado_resumo_view postgres
+380; 1259 25350 SEQUENCE folha lancamento_temp_id_seq postgres
+381; 1259 25351 VIEW folha lancamento_view postgres
+382; 1259 25356 SEQUENCE folha rubrica_id_seq postgres
+6366; 0 0 SEQUENCE OWNED BY folha rubrica_id_seq postgres
+383; 1259 25357 TABLE folha rubrica_incidencia postgres
+384; 1259 25360 SEQUENCE folha rubrica_incidencia_id_seq postgres
+6367; 0 0 SEQUENCE OWNED BY folha rubrica_incidencia_id_seq postgres
+385; 1259 25361 VIEW folha rubrica_incidencia_view postgres
+386; 1259 25366 TABLE folha rubrica_rel_folha_tipo postgres
+387; 1259 25369 SEQUENCE folha rubrica_rel_folha_tipo_id_seq postgres
+6368; 0 0 SEQUENCE OWNED BY folha rubrica_rel_folha_tipo_id_seq postgres
+388; 1259 25370 VIEW folha rubrica_rel_folha_tipo_view postgres
+389; 1259 25374 TABLE folha rubrica_rel_grupo postgres
+390; 1259 25377 SEQUENCE folha rubrica_rel_grupo_id_seq postgres
+6369; 0 0 SEQUENCE OWNED BY folha rubrica_rel_grupo_id_seq postgres
+391; 1259 25378 VIEW folha rubrica_rel_grupo_view postgres
+392; 1259 25383 VIEW folha rubrica_view postgres
+393; 1259 25388 TABLE folha salario_piso_teto postgres
+394; 1259 25394 SEQUENCE folha salario_piso_teto_id_seq postgres
+6370; 0 0 SEQUENCE OWNED BY folha salario_piso_teto_id_seq postgres
+395; 1259 25395 VIEW folha salario_piso_teto_view postgres
+396; 1259 25400 TABLE folha tabela_irpf postgres
+397; 1259 25405 TABLE folha tabela_irpf_aliquota postgres
+398; 1259 25410 SEQUENCE folha tabela_irpf_aliquota_id_seq postgres
+6371; 0 0 SEQUENCE OWNED BY folha tabela_irpf_aliquota_id_seq postgres
+399; 1259 25411 SEQUENCE folha tabela_irpf_id_seq postgres
+6372; 0 0 SEQUENCE OWNED BY folha tabela_irpf_id_seq postgres
+400; 1259 25412 TABLE folha tabela_previdencia postgres
+401; 1259 25417 TABLE folha tabela_previdencia_aliquota postgres
+402; 1259 25422 SEQUENCE folha tabela_previdencia_aliquota_id_seq postgres
+6373; 0 0 SEQUENCE OWNED BY folha tabela_previdencia_aliquota_id_seq postgres
+403; 1259 25423 SEQUENCE folha tabela_previdencia_id_seq postgres
+6374; 0 0 SEQUENCE OWNED BY folha tabela_previdencia_id_seq postgres
+404; 1259 25424 TABLE previdencia regime_previdenciario postgres
+6375; 0 0 COMMENT previdencia COLUMN regime_previdenciario.rubrica_id postgres
+6376; 0 0 COMMENT previdencia COLUMN regime_previdenciario.rubrica_13_id postgres
+405; 1259 25429 VIEW folha tabela_previdencia_view postgres
+406; 1259 25433 TABLE folha variavel postgres
+407; 1259 25438 SEQUENCE folha variavel_id_seq postgres
+6377; 0 0 SEQUENCE OWNED BY folha variavel_id_seq postgres
+408; 1259 25439 TABLE log auditoria postgres
+6378; 0 0 COMMENT log TABLE auditoria postgres
+6379; 0 0 COMMENT log COLUMN auditoria.pkyaud postgres
+6380; 0 0 COMMENT log COLUMN auditoria.dthaud postgres
+6381; 0 0 COMMENT log COLUMN auditoria.usuaud postgres
+6382; 0 0 COMMENT log COLUMN auditoria.hosaud postgres
+6383; 0 0 COMMENT log COLUMN auditoria.banaud postgres
+6384; 0 0 COMMENT log COLUMN auditoria.scmaud postgres
+6385; 0 0 COMMENT log COLUMN auditoria.tabaud postgres
+6386; 0 0 COMMENT log COLUMN auditoria.camaud postgres
+6387; 0 0 COMMENT log COLUMN auditoria.npkaud postgres
+6388; 0 0 COMMENT log COLUMN auditoria.vpkaud postgres
+6389; 0 0 COMMENT log COLUMN auditoria.tacaud postgres
+6390; 0 0 COMMENT log COLUMN auditoria.maqaud postgres
+6391; 0 0 COMMENT log COLUMN auditoria.vanaud postgres
+6392; 0 0 COMMENT log COLUMN auditoria.vnoaud postgres
+6393; 0 0 COMMENT log COLUMN auditoria.queaud postgres
+409; 1259 25445 SEQUENCE log auditoria_pkyaud_seq postgres
+6394; 0 0 SEQUENCE OWNED BY log auditoria_pkyaud_seq postgres
+410; 1259 25446 TABLE log log_aplicacao postgres
+411; 1259 25452 SEQUENCE log log_aplicacao_id_seq postgres
+6395; 0 0 SEQUENCE OWNED BY log log_aplicacao_id_seq postgres
+412; 1259 25453 TABLE log logs postgres
+413; 1259 25458 VIEW log logs_bd_view postgres
+414; 1259 25463 SEQUENCE log logs_id_seq postgres
+6396; 0 0 SEQUENCE OWNED BY log logs_id_seq postgres
+415; 1259 25464 TABLE ponto_eletronico banco_hora postgres
+416; 1259 25469 SEQUENCE ponto_eletronico banco_hora_id_seq postgres
+6397; 0 0 SEQUENCE OWNED BY ponto_eletronico banco_hora_id_seq postgres
+417; 1259 25470 TABLE ponto_eletronico banco_hora_saldo postgres
+418; 1259 25475 SEQUENCE ponto_eletronico banco_hora_saldo_id_seq postgres
+6398; 0 0 SEQUENCE OWNED BY ponto_eletronico banco_hora_saldo_id_seq postgres
+419; 1259 25476 TABLE ponto_eletronico justificativa_registro_ponto postgres
+420; 1259 25483 VIEW ponto_eletronico banco_hora_saldo_view postgres
+421; 1259 25488 TABLE ponto_eletronico banco_hora_tipo postgres
+422; 1259 25493 SEQUENCE ponto_eletronico banco_hora_tipo_id_seq postgres
+6399; 0 0 SEQUENCE OWNED BY ponto_eletronico banco_hora_tipo_id_seq postgres
+423; 1259 25494 TABLE ponto_eletronico justificativa_tipo postgres
+424; 1259 25502 VIEW ponto_eletronico banco_hora_view postgres
+425; 1259 25507 TABLE ponto_eletronico dia_semana postgres
+426; 1259 25512 SEQUENCE ponto_eletronico dia_semana_id_seq postgres
+6400; 0 0 SEQUENCE OWNED BY ponto_eletronico dia_semana_id_seq postgres
+427; 1259 25513 TABLE ponto_eletronico jornada_trabalho postgres
+428; 1259 25516 SEQUENCE ponto_eletronico jornada_trabalho_id_seq postgres
+6401; 0 0 SEQUENCE OWNED BY ponto_eletronico jornada_trabalho_id_seq postgres
+429; 1259 25517 TABLE ponto_eletronico jornada_trabalho_rel_dia_semana postgres
+430; 1259 25520 SEQUENCE ponto_eletronico jornada_trabalho_rel_dia_semana_id_seq postgres
+6402; 0 0 SEQUENCE OWNED BY ponto_eletronico jornada_trabalho_rel_dia_semana_id_seq postgres
+431; 1259 25521 VIEW ponto_eletronico jornada_trabalho_view postgres
+432; 1259 25525 TABLE ponto_eletronico jornadas_json postgres
+433; 1259 25530 SEQUENCE ponto_eletronico justificativa_registro_ponto_id_seq postgres
+6403; 0 0 SEQUENCE OWNED BY ponto_eletronico justificativa_registro_ponto_id_seq postgres
+434; 1259 25531 TABLE ponto_eletronico justificativa_registro_ponto_item postgres
+435; 1259 25534 SEQUENCE ponto_eletronico justificativa_registro_ponto_item_id_seq postgres
+6404; 0 0 SEQUENCE OWNED BY ponto_eletronico justificativa_registro_ponto_item_id_seq postgres
+436; 1259 25535 VIEW ponto_eletronico justificativa_registro_ponto_view postgres
+437; 1259 25539 SEQUENCE ponto_eletronico justificativa_tipo_id_seq postgres
+6405; 0 0 SEQUENCE OWNED BY ponto_eletronico justificativa_tipo_id_seq postgres
+438; 1259 25540 TABLE ponto_eletronico regime_rel_jornada_trabalho postgres
+439; 1259 25543 SEQUENCE ponto_eletronico regime_rel_jornada_trabalho_id_seq postgres
+6406; 0 0 SEQUENCE OWNED BY ponto_eletronico regime_rel_jornada_trabalho_id_seq postgres
+440; 1259 25544 VIEW ponto_eletronico regime_rel_jornada_trabalho_view postgres
+441; 1259 25548 TABLE ponto_eletronico regime_trabalho postgres
+442; 1259 25553 SEQUENCE ponto_eletronico regime_trabalho_id_seq postgres
+6407; 0 0 SEQUENCE OWNED BY ponto_eletronico regime_trabalho_id_seq postgres
+443; 1259 25554 TABLE public arquivo_propriedade postgres
+444; 1259 25560 VIEW ponto_eletronico regime_trabalho_view postgres
+445; 1259 25565 TABLE ponto_eletronico registro_ponto postgres
+446; 1259 25571 SEQUENCE ponto_eletronico registro_ponto_id_seq postgres
+6408; 0 0 SEQUENCE OWNED BY ponto_eletronico registro_ponto_id_seq postgres
+447; 1259 25572 TABLE ponto_eletronico relogio_de_ponto postgres
+448; 1259 25578 SEQUENCE ponto_eletronico relogio_de_ponto_id_seq postgres
+6409; 0 0 SEQUENCE OWNED BY ponto_eletronico relogio_de_ponto_id_seq postgres
+449; 1259 25579 TABLE ponto_eletronico vinculo_rel_regime_trabalho postgres
+450; 1259 25585 TABLE vinculo lotacao postgres
+451; 1259 25591 VIEW ponto_eletronico servidor_frequencia_view postgres
+452; 1259 25596 TABLE ponto_eletronico setor_resumo_mensal postgres
+453; 1259 25601 SEQUENCE ponto_eletronico setor_resumo_mensal_id_seq postgres
+6410; 0 0 SEQUENCE OWNED BY ponto_eletronico setor_resumo_mensal_id_seq postgres
+454; 1259 25602 SEQUENCE ponto_eletronico vinculo_rel_regime_trabalho_id_seq postgres
+6411; 0 0 SEQUENCE OWNED BY ponto_eletronico vinculo_rel_regime_trabalho_id_seq postgres
+455; 1259 25603 VIEW ponto_eletronico vinculo_rel_regime_trabalho_view postgres
+456; 1259 25607 TABLE ponto_eletronico vinculo_resumo_mensal postgres
+457; 1259 25613 SEQUENCE ponto_eletronico vinculo_resumo_mensal_id_seq postgres
+6412; 0 0 SEQUENCE OWNED BY ponto_eletronico vinculo_resumo_mensal_id_seq postgres
+458; 1259 25614 SEQUENCE previdencia regime_previdenciario_fundo_id_seq postgres
+6413; 0 0 SEQUENCE OWNED BY previdencia regime_previdenciario_fundo_id_seq postgres
+459; 1259 25615 SEQUENCE previdencia regime_previdenciario_id_seq postgres
+6414; 0 0 SEQUENCE OWNED BY previdencia regime_previdenciario_id_seq postgres
+460; 1259 25616 TABLE previdencia vigencia_patronal postgres
+461; 1259 25621 SEQUENCE previdencia vigencia_patronal_id_seq postgres
+6415; 0 0 SEQUENCE OWNED BY previdencia vigencia_patronal_id_seq postgres
+462; 1259 25622 TABLE public agencia postgres
+463; 1259 25625 SEQUENCE public agencia_id_seq postgres
+6416; 0 0 SEQUENCE OWNED BY public agencia_id_seq postgres
+464; 1259 25626 TABLE public banco postgres
+465; 1259 25629 VIEW public agencia_view postgres
+466; 1259 25633 TABLE public anexo postgres
+467; 1259 25639 SEQUENCE public anexo_id_seq postgres
+6417; 0 0 SEQUENCE OWNED BY public anexo_id_seq postgres
+468; 1259 25640 TABLE public arquivo postgres
+469; 1259 25645 SEQUENCE public arquivo_id_seq postgres
+6418; 0 0 SEQUENCE OWNED BY public arquivo_id_seq postgres
+470; 1259 25646 SEQUENCE public arquivo_propriedade_id_seq postgres
+6419; 0 0 SEQUENCE OWNED BY public arquivo_propriedade_id_seq postgres
+471; 1259 25647 SEQUENCE public banco_id_seq postgres
+6420; 0 0 SEQUENCE OWNED BY public banco_id_seq postgres
+472; 1259 25648 TABLE public feriado postgres
+473; 1259 25655 VIEW public calendario_view postgres
+474; 1259 25660 TABLE public conta_bancaria postgres
+475; 1259 25666 SEQUENCE public conta_bancaria_id_seq postgres
+6421; 0 0 SEQUENCE OWNED BY public conta_bancaria_id_seq postgres
+476; 1259 25667 TABLE public conta_bancaria_tipo postgres
+477; 1259 25672 VIEW public conta_bancaria_resumo_view postgres
+478; 1259 25677 TABLE public contato_tipo postgres
+479; 1259 25682 SEQUENCE public contato_tipo_id_seq postgres
+6422; 0 0 SEQUENCE OWNED BY public contato_tipo_id_seq postgres
+480; 1259 25683 TABLE public deficiencia_tipo postgres
+481; 1259 25688 SEQUENCE public deficiencia_tipo_id_seq postgres
+6423; 0 0 SEQUENCE OWNED BY public deficiencia_tipo_id_seq postgres
+482; 1259 25689 TABLE public documento_cnh postgres
+483; 1259 25694 SEQUENCE public documento_cnh_id_seq postgres
+6424; 0 0 SEQUENCE OWNED BY public documento_cnh_id_seq postgres
+484; 1259 25695 TABLE public documento_ctps postgres
+485; 1259 25700 SEQUENCE public documento_ctps_id_seq postgres
+6425; 0 0 SEQUENCE OWNED BY public documento_ctps_id_seq postgres
+486; 1259 25701 TABLE public documento_identidade_profissional postgres
+487; 1259 25706 SEQUENCE public documento_identidade_profissional_id_seq postgres
+6426; 0 0 SEQUENCE OWNED BY public documento_identidade_profissional_id_seq postgres
+488; 1259 25707 TABLE public documento_reservista postgres
+489; 1259 25712 SEQUENCE public documento_reservista_id_seq postgres
+6427; 0 0 SEQUENCE OWNED BY public documento_reservista_id_seq postgres
+490; 1259 25713 TABLE public documento_rg postgres
+491; 1259 25718 SEQUENCE public documento_rg_id_seq postgres
+6428; 0 0 SEQUENCE OWNED BY public documento_rg_id_seq postgres
+492; 1259 25719 TABLE public documento_tipo postgres
+493; 1259 25725 SEQUENCE public documento_tipo_id_seq postgres
+6429; 0 0 SEQUENCE OWNED BY public documento_tipo_id_seq postgres
+494; 1259 25726 TABLE public documento_titulo_eleitor postgres
+495; 1259 25731 SEQUENCE public documento_titulo_eleitor_id_seq postgres
+6430; 0 0 SEQUENCE OWNED BY public documento_titulo_eleitor_id_seq postgres
+496; 1259 25732 TABLE public empresa postgres
+497; 1259 25739 TABLE public empresa_old postgres
+498; 1259 25746 SEQUENCE public empresa_id_seq postgres
+6431; 0 0 SEQUENCE OWNED BY public empresa_id_seq postgres
+499; 1259 25747 SEQUENCE public empresa_id_seq1 postgres
+6432; 0 0 SEQUENCE OWNED BY public empresa_id_seq1 postgres
+500; 1259 25748 TABLE public empresa_rel_modulo postgres
+501; 1259 25751 SEQUENCE public empresa_rel_modulo_id_seq postgres
+6433; 0 0 SEQUENCE OWNED BY public empresa_rel_modulo_id_seq postgres
+502; 1259 25752 TABLE public modulo postgres
+503; 1259 25757 VIEW public empresa_rel_modulo_view postgres
+504; 1259 25761 TABLE public empresa_responsavel postgres
+505; 1259 25766 TABLE public empresa_responsavel_old postgres
+506; 1259 25771 SEQUENCE public empresa_responsavel_id_seq postgres
+6434; 0 0 SEQUENCE OWNED BY public empresa_responsavel_id_seq postgres
+507; 1259 25772 SEQUENCE public empresa_responsavel_id_seq1 postgres
+6435; 0 0 SEQUENCE OWNED BY public empresa_responsavel_id_seq1 postgres
+508; 1259 25773 TABLE public empresa_responsavel_relatorio postgres
+509; 1259 25776 SEQUENCE public empresa_responsavel_relatorio_id_seq postgres
+6436; 0 0 SEQUENCE OWNED BY public empresa_responsavel_relatorio_id_seq postgres
+510; 1259 25777 VIEW public empresa_responsavel_relatorio_view postgres
+511; 1259 25781 TABLE public empresa_responsavel_tipo postgres
+512; 1259 25786 SEQUENCE public empresa_responsavel_tipo_id_seq postgres
+6437; 0 0 SEQUENCE OWNED BY public empresa_responsavel_tipo_id_seq postgres
+513; 1259 25787 TABLE public tipo_empresa_resposavel postgres
+514; 1259 25792 VIEW public empresa_responsavel_view postgres
+515; 1259 25797 VIEW public empresa_view postgres
+516; 1259 25802 TABLE public estado_civil postgres
+517; 1259 25807 SEQUENCE public estado_civil_id_seq postgres
+6438; 0 0 SEQUENCE OWNED BY public estado_civil_id_seq postgres
+518; 1259 25808 SEQUENCE public feriado_id_seq postgres
+6439; 0 0 SEQUENCE OWNED BY public feriado_id_seq postgres
+686; 1259 33214 TABLE public jasper postgres
+519; 1259 25809 SEQUENCE public modulo_id_seq postgres
+6440; 0 0 SEQUENCE OWNED BY public modulo_id_seq postgres
+520; 1259 25810 SEQUENCE public nivel_formacao_id_seq postgres
+6441; 0 0 SEQUENCE OWNED BY public nivel_formacao_id_seq postgres
+521; 1259 25811 VIEW public nivel_formacao_view postgres
+522; 1259 25815 SEQUENCE public notificacao_id_seq_temp postgres
+523; 1259 25816 SEQUENCE public parametro_id_seq postgres
+524; 1259 25817 TABLE public parametro postgres
+525; 1259 25823 TABLE public pessoa_contato postgres
+526; 1259 25829 SEQUENCE public pessoa_contato_id_seq postgres
+6442; 0 0 SEQUENCE OWNED BY public pessoa_contato_id_seq postgres
+527; 1259 25830 VIEW public pessoa_contato_view postgres
+528; 1259 25834 TABLE public pessoa_documento postgres
+529; 1259 25840 SEQUENCE public pessoa_documento_id_seq postgres
+6443; 0 0 SEQUENCE OWNED BY public pessoa_documento_id_seq postgres
+530; 1259 25841 SEQUENCE public pessoa_id_seq postgres
+6444; 0 0 SEQUENCE OWNED BY public pessoa_id_seq postgres
+531; 1259 25842 TABLE public pessoa_rel_deficiencia postgres
+532; 1259 25845 SEQUENCE public pessoa_rel_deficiencia_id_seq postgres
+6445; 0 0 SEQUENCE OWNED BY public pessoa_rel_deficiencia_id_seq postgres
+533; 1259 25846 TABLE public pessoa_rel_endereco postgres
+534; 1259 25850 SEQUENCE public pessoa_rel_endereco_id_seq postgres
+6446; 0 0 SEQUENCE OWNED BY public pessoa_rel_endereco_id_seq postgres
+535; 1259 25851 VIEW public pessoa_rel_endereco_view postgres
+536; 1259 25856 TABLE public raca postgres
+537; 1259 25861 TABLE public sexo postgres
+538; 1259 25866 VIEW public pessoa_view postgres
+539; 1259 25871 TABLE public plano_saude postgres
+540; 1259 25876 SEQUENCE public plano_saude_id_seq postgres
+6447; 0 0 SEQUENCE OWNED BY public plano_saude_id_seq postgres
+541; 1259 25877 SEQUENCE public raca_id_seq postgres
+6448; 0 0 SEQUENCE OWNED BY public raca_id_seq postgres
+542; 1259 25878 SEQUENCE public sexo_id_seq postgres
+6449; 0 0 SEQUENCE OWNED BY public sexo_id_seq postgres
+543; 1259 25879 TABLE public tipo_sanguineo postgres
+544; 1259 25884 SEQUENCE public tipo_sanguineo_id_seq postgres
+6450; 0 0 SEQUENCE OWNED BY public tipo_sanguineo_id_seq postgres
+545; 1259 25885 TABLE public versao postgres
+546; 1259 25888 TABLE public versao_scripts_bd postgres
+547; 1259 25894 SEQUENCE public versao_scripts_bd_id_seq postgres
+6451; 0 0 SEQUENCE OWNED BY public versao_scripts_bd_id_seq postgres
+548; 1259 25895 TABLE rescisao rescisao postgres
+549; 1259 25900 SEQUENCE rescisao rescisao_id_seq postgres
+6452; 0 0 SEQUENCE OWNED BY rescisao rescisao_id_seq postgres
+550; 1259 25901 TABLE seguranca perfil_rel_usuario postgres
+551; 1259 25906 TABLE seguranca permissao postgres
+552; 1259 25912 TABLE seguranca permissao_rel_perfil postgres
+553; 1259 25915 VIEW seguranca authority_view postgres
+554; 1259 25920 TABLE seguranca grupo_permissao postgres
+555; 1259 25925 SEQUENCE seguranca grupo_permissao_id_seq postgres
+6453; 0 0 SEQUENCE OWNED BY seguranca grupo_permissao_id_seq postgres
+556; 1259 25926 TABLE seguranca perfil postgres
+557; 1259 25931 SEQUENCE seguranca perfil_id_seq postgres
+6454; 0 0 SEQUENCE OWNED BY seguranca perfil_id_seq postgres
+558; 1259 25932 SEQUENCE seguranca perfil_rel_usuario_id_seq postgres
+6455; 0 0 SEQUENCE OWNED BY seguranca perfil_rel_usuario_id_seq postgres
+559; 1259 25933 VIEW seguranca perfil_rel_usuario_view postgres
+560; 1259 25938 SEQUENCE seguranca permissao_id_seq postgres
+6456; 0 0 SEQUENCE OWNED BY seguranca permissao_id_seq postgres
+561; 1259 25939 SEQUENCE seguranca permissao_rel_perfil_id_seq postgres
+6457; 0 0 SEQUENCE OWNED BY seguranca permissao_rel_perfil_id_seq postgres
+562; 1259 25940 VIEW seguranca permissao_rel_perfil_view postgres
+563; 1259 25944 TABLE seguranca recuperar_senha postgres
+564; 1259 25949 SEQUENCE seguranca recuperar_senha_id_seq postgres
+6458; 0 0 SEQUENCE OWNED BY seguranca recuperar_senha_id_seq postgres
+565; 1259 25950 SEQUENCE seguranca usuario_id_seq postgres
+6459; 0 0 SEQUENCE OWNED BY seguranca usuario_id_seq postgres
+566; 1259 25951 VIEW seguranca usuario_view postgres
+567; 1259 25956 TABLE setor nivel_hierarquico postgres
+568; 1259 25962 SEQUENCE setor nivel_hierarquico_id_seq postgres
+6460; 0 0 SEQUENCE OWNED BY setor nivel_hierarquico_id_seq postgres
+569; 1259 25963 TABLE setor setor_contato postgres
+570; 1259 25968 SEQUENCE setor setor_contato_id_seq postgres
+6461; 0 0 SEQUENCE OWNED BY setor setor_contato_id_seq postgres
+571; 1259 25969 VIEW setor setor_contato_view postgres
+572; 1259 25973 SEQUENCE setor setor_id_seq postgres
+6462; 0 0 SEQUENCE OWNED BY setor setor_id_seq postgres
+573; 1259 25974 TABLE setor setor_rel_unidade postgres
+574; 1259 25977 SEQUENCE setor setor_rel_unidade_id_seq postgres
+6463; 0 0 SEQUENCE OWNED BY setor setor_rel_unidade_id_seq postgres
+575; 1259 25978 TABLE setor unidade postgres
+576; 1259 25983 VIEW setor setor_rel_unidade_view postgres
+577; 1259 25987 TABLE setor setor_tipo postgres
+578; 1259 25992 SEQUENCE setor setor_tipo_id_seq postgres
+6464; 0 0 SEQUENCE OWNED BY setor setor_tipo_id_seq postgres
+579; 1259 25993 VIEW setor setor_view postgres
+580; 1259 25998 SEQUENCE setor unidade_id_seq postgres
+6465; 0 0 SEQUENCE OWNED BY setor unidade_id_seq postgres
+581; 1259 25999 TABLE vinculo adicional_tipo postgres
+582; 1259 26006 SEQUENCE vinculo adicional_tipo_id_seq postgres
+6466; 0 0 SEQUENCE OWNED BY vinculo adicional_tipo_id_seq postgres
+583; 1259 26007 TABLE vinculo afastamento postgres
+584; 1259 26012 TABLE vinculo afastamento_configuracao postgres
+585; 1259 26016 SEQUENCE vinculo afastamento_configuracao_id_seq postgres
+6467; 0 0 SEQUENCE OWNED BY vinculo afastamento_configuracao_id_seq postgres
+586; 1259 26017 SEQUENCE vinculo afastamento_id_seq postgres
+6468; 0 0 SEQUENCE OWNED BY vinculo afastamento_id_seq postgres
+587; 1259 26018 TABLE vinculo afastamento_tipo postgres
+588; 1259 26025 SEQUENCE vinculo afastamento_tipo_id_seq postgres
+6469; 0 0 SEQUENCE OWNED BY vinculo afastamento_tipo_id_seq postgres
+589; 1259 26026 VIEW vinculo afastamento_view postgres
+590; 1259 26031 TABLE vinculo anexo postgres
+591; 1259 26037 SEQUENCE vinculo anexo_id_seq postgres
+6470; 0 0 SEQUENCE OWNED BY vinculo anexo_id_seq postgres
+592; 1259 26038 VIEW vinculo anexo_view postgres
+593; 1259 26043 TABLE vinculo anotacao postgres
+594; 1259 26048 SEQUENCE vinculo anotacao_id_seq postgres
+6471; 0 0 SEQUENCE OWNED BY vinculo anotacao_id_seq postgres
+595; 1259 26049 TABLE vinculo anotacao_tipo postgres
+596; 1259 26054 SEQUENCE vinculo anotacao_tipo_id_seq postgres
+6472; 0 0 SEQUENCE OWNED BY vinculo anotacao_tipo_id_seq postgres
+597; 1259 26055 TABLE vinculo auxilio_saude postgres
+598; 1259 26060 SEQUENCE vinculo auxilio_saude_id_seq postgres
+6473; 0 0 SEQUENCE OWNED BY vinculo auxilio_saude_id_seq postgres
+599; 1259 26061 TABLE vinculo averbacoes_efeito postgres
+600; 1259 26066 SEQUENCE vinculo averbacoes_efeito_id_seq postgres
+6474; 0 0 SEQUENCE OWNED BY vinculo averbacoes_efeito_id_seq postgres
+601; 1259 26067 TABLE vinculo averbacoes_origem postgres
+602; 1259 26072 SEQUENCE vinculo averbacoes_origem_id_seq postgres
+6475; 0 0 SEQUENCE OWNED BY vinculo averbacoes_origem_id_seq postgres
+603; 1259 26073 TABLE vinculo ferias postgres
+604; 1259 26078 TABLE vinculo ferias_gozo postgres
+605; 1259 26085 VIEW vinculo aviso_view postgres
+606; 1259 26090 TABLE vinculo cedencia postgres
+607; 1259 26098 SEQUENCE vinculo cedencia_id_seq postgres
+6476; 0 0 SEQUENCE OWNED BY vinculo cedencia_id_seq postgres
+608; 1259 26099 VIEW vinculo cedencia_view postgres
+609; 1259 26104 TABLE vinculo credito_para_terceiro postgres
+610; 1259 26110 TABLE vinculo credito_para_terceiro_anexo postgres
+611; 1259 26113 SEQUENCE vinculo credito_para_terceiro_anexo_id_seq postgres
+6477; 0 0 SEQUENCE OWNED BY vinculo credito_para_terceiro_anexo_id_seq postgres
+612; 1259 26114 VIEW vinculo credito_para_terceiro_anexo_view postgres
+613; 1259 26119 SEQUENCE vinculo credito_para_terceiro_id_seq postgres
+6478; 0 0 SEQUENCE OWNED BY vinculo credito_para_terceiro_id_seq postgres
+614; 1259 26120 TABLE vinculo credito_para_terceiro_incidencia postgres
+615; 1259 26123 SEQUENCE vinculo credito_para_terceiro_incidencia_id_seq postgres
+6479; 0 0 SEQUENCE OWNED BY vinculo credito_para_terceiro_incidencia_id_seq postgres
+616; 1259 26124 VIEW vinculo credito_para_terceiro_incidencia_view postgres
+617; 1259 26129 TABLE vinculo credito_para_terceiro_rel_folha_tipo postgres
+618; 1259 26132 SEQUENCE vinculo credito_para_terceiro_rel_folha_tipo_id_seq postgres
+6480; 0 0 SEQUENCE OWNED BY vinculo credito_para_terceiro_rel_folha_tipo_id_seq postgres
+619; 1259 26133 VIEW vinculo credito_para_terceiro_rel_folha_tipo_view postgres
+620; 1259 26138 VIEW vinculo credito_para_terceiro_view postgres
+621; 1259 26143 TABLE vinculo tipo_decimo_terceiro postgres
+622; 1259 26149 VIEW vinculo dados_funcionais_resumo_view postgres
+623; 1259 26154 TABLE vinculo dependente postgres
+624; 1259 26162 SEQUENCE vinculo dependente_id_seq postgres
+6481; 0 0 SEQUENCE OWNED BY vinculo dependente_id_seq postgres
+625; 1259 26163 VIEW vinculo dependente_view postgres
+626; 1259 26168 TABLE vinculo estagio postgres
+627; 1259 26173 SEQUENCE vinculo estagio_id_seq postgres
+6482; 0 0 SEQUENCE OWNED BY vinculo estagio_id_seq postgres
+628; 1259 26174 TABLE vinculo estagio_natureza postgres
+629; 1259 26179 SEQUENCE vinculo estagio_natureza_id_seq postgres
+6483; 0 0 SEQUENCE OWNED BY vinculo estagio_natureza_id_seq postgres
+630; 1259 26180 TABLE vinculo estagio_tipo postgres
+631; 1259 26185 VIEW vinculo estagio_resumo_view postgres
+632; 1259 26190 SEQUENCE vinculo estagio_tipo_id_seq postgres
+6484; 0 0 SEQUENCE OWNED BY vinculo estagio_tipo_id_seq postgres
+633; 1259 26191 TABLE vinculo ferias_configuracao_desconto postgres
+634; 1259 26196 SEQUENCE vinculo ferias_configuracao_desconto_id_seq postgres
+6485; 0 0 SEQUENCE OWNED BY vinculo ferias_configuracao_desconto_id_seq postgres
+635; 1259 26197 SEQUENCE vinculo ferias_gozo_id_seq postgres
+6486; 0 0 SEQUENCE OWNED BY vinculo ferias_gozo_id_seq postgres
+636; 1259 26198 VIEW vinculo ferias_gozo_view postgres
+637; 1259 26203 SEQUENCE vinculo ferias_id_seq postgres
+6487; 0 0 SEQUENCE OWNED BY vinculo ferias_id_seq postgres
+638; 1259 26204 SEQUENCE vinculo ferias_tipo_calculo_id_seq postgres
+639; 1259 26205 TABLE vinculo ferias_tipo_calculo postgres
+640; 1259 26211 VIEW vinculo ferias_view postgres
+641; 1259 26215 TABLE vinculo gratificacoes_tipo postgres
+642; 1259 26220 SEQUENCE vinculo gratificacoes_tipo_id_seq postgres
+6488; 0 0 SEQUENCE OWNED BY vinculo gratificacoes_tipo_id_seq postgres
+643; 1259 26221 TABLE vinculo incorporacoes_tipo postgres
+644; 1259 26226 SEQUENCE vinculo incorporacoes_tipo_id_seq postgres
+6489; 0 0 SEQUENCE OWNED BY vinculo incorporacoes_tipo_id_seq postgres
+645; 1259 26227 TABLE vinculo informacao_curricular postgres
+646; 1259 26232 TABLE vinculo informacao_curricular_area postgres
+647; 1259 26237 SEQUENCE vinculo informacao_curricular_area_id_seq postgres
+6490; 0 0 SEQUENCE OWNED BY vinculo informacao_curricular_area_id_seq postgres
+648; 1259 26238 SEQUENCE vinculo informacao_curricular_id_seq postgres
+6491; 0 0 SEQUENCE OWNED BY vinculo informacao_curricular_id_seq postgres
+649; 1259 26239 TABLE vinculo informacao_curricular_nivel_curso postgres
+650; 1259 26244 SEQUENCE vinculo informacao_curricular_nivel_curso_id_seq postgres
+6492; 0 0 SEQUENCE OWNED BY vinculo informacao_curricular_nivel_curso_id_seq postgres
+651; 1259 26245 VIEW vinculo informacao_curricular_view postgres
+652; 1259 26250 SEQUENCE vinculo lotacao_id_seq postgres
+6493; 0 0 SEQUENCE OWNED BY vinculo lotacao_id_seq postgres
+653; 1259 26251 VIEW vinculo lotacao_view postgres
+654; 1259 26256 TABLE vinculo pensao postgres
+655; 1259 26260 SEQUENCE vinculo pensao_id_seq postgres
+6494; 0 0 SEQUENCE OWNED BY vinculo pensao_id_seq postgres
+656; 1259 26261 TABLE vinculo pensao_rel_folha_tipo postgres
+657; 1259 26264 SEQUENCE vinculo pensao_rel_folha_tipo_id_seq postgres
+6495; 0 0 SEQUENCE OWNED BY vinculo pensao_rel_folha_tipo_id_seq postgres
+658; 1259 26265 VIEW vinculo pensao_rel_folha_tipo_view postgres
+659; 1259 26270 TABLE vinculo pensao_rel_pensionista postgres
+660; 1259 26275 SEQUENCE vinculo pensao_rel_pensionista_id_seq postgres
+6496; 0 0 SEQUENCE OWNED BY vinculo pensao_rel_pensionista_id_seq postgres
+661; 1259 26276 VIEW vinculo pensao_rel_pensionista_view postgres
+662; 1259 26281 TABLE vinculo pensao_representante_tipo postgres
+663; 1259 26286 SEQUENCE vinculo pensao_representante_tipo_id_seq postgres
+6497; 0 0 SEQUENCE OWNED BY vinculo pensao_representante_tipo_id_seq postgres
+664; 1259 26287 TABLE vinculo pensao_tipo postgres
+665; 1259 26292 SEQUENCE vinculo pensao_tipo_id_seq postgres
+6498; 0 0 SEQUENCE OWNED BY vinculo pensao_tipo_id_seq postgres
+666; 1259 26293 TABLE vinculo pensao_tipo_rel_incidencia postgres
+667; 1259 26296 SEQUENCE vinculo pensao_tipo_rel_incidencia_id_seq postgres
+6499; 0 0 SEQUENCE OWNED BY vinculo pensao_tipo_rel_incidencia_id_seq postgres
+668; 1259 26297 VIEW vinculo pensao_tipo_rel_incidencia_view postgres
+669; 1259 26302 VIEW vinculo pensao_view postgres
+670; 1259 26307 TABLE vinculo substituicao postgres
+671; 1259 26313 SEQUENCE vinculo substituicao_id_seq postgres
+6500; 0 0 SEQUENCE OWNED BY vinculo substituicao_id_seq postgres
+672; 1259 26314 VIEW vinculo substituicao_view postgres
+673; 1259 26319 TABLE vinculo tipo_admissao postgres
+674; 1259 26324 SEQUENCE vinculo tipo_admissao_id_seq postgres
+6501; 0 0 SEQUENCE OWNED BY vinculo tipo_admissao_id_seq postgres
+675; 1259 26325 SEQUENCE vinculo vinculo_cargo_id_seq postgres
+6502; 0 0 SEQUENCE OWNED BY vinculo vinculo_cargo_id_seq postgres
+676; 1259 26326 VIEW vinculo vinculo_cargo_view postgres
+677; 1259 26331 TABLE vinculo vinculo_funcional_adicional postgres
+678; 1259 26336 SEQUENCE vinculo vinculo_funcional_adicional_id_seq postgres
+6503; 0 0 SEQUENCE OWNED BY vinculo vinculo_funcional_adicional_id_seq postgres
+679; 1259 26337 VIEW vinculo vinculo_funcional_adicional_resumo_view postgres
+680; 1259 26342 TABLE vinculo vinculo_funcional_gratificacoes postgres
+681; 1259 26347 SEQUENCE vinculo vinculo_funcional_gratificacoes_id_seq postgres
+6504; 0 0 SEQUENCE OWNED BY vinculo vinculo_funcional_gratificacoes_id_seq postgres
+682; 1259 26348 SEQUENCE vinculo vinculo_funcional_id_seq postgres
+6505; 0 0 SEQUENCE OWNED BY vinculo vinculo_funcional_id_seq postgres
+683; 1259 26349 TABLE vinculo vinculo_funcional_incorporacoes postgres
+684; 1259 26354 SEQUENCE vinculo vinculo_funcional_incorporacoes_id_seq postgres
+6506; 0 0 SEQUENCE OWNED BY vinculo vinculo_funcional_incorporacoes_id_seq postgres
+685; 1259 26355 VIEW vinculo vinculo_funcional_view postgres
+4647; 2604 26360 DEFAULT categoria_funcional agregacao id postgres
+4658; 2604 26361 DEFAULT categoria_funcional area_atuacao id postgres
+4662; 2604 26362 DEFAULT categoria_funcional cargo id postgres
+4663; 2604 26363 DEFAULT categoria_funcional cargo_nivel id postgres
+4664; 2604 26364 DEFAULT categoria_funcional cargo_rel_cargo_nivel id postgres
+4657; 2604 26365 DEFAULT categoria_funcional categoria id postgres
+4673; 2604 26366 DEFAULT categoria_funcional categoria_rubrica_padrao id postgres
+4692; 2604 26367 DEFAULT categoria_funcional reajuste_salarial id postgres
+4693; 2604 26368 DEFAULT categoria_funcional reajuste_valor_nivel id postgres
+4694; 2604 26369 DEFAULT categoria_funcional tipo_vinculo_empregaticio id postgres
+4669; 2604 26370 DEFAULT categoria_funcional vinculo_tipo id postgres
+4695; 2604 26371 DEFAULT cep bairro id postgres
+4696; 2604 26372 DEFAULT cep cidade id postgres
+4697; 2604 26373 DEFAULT cep endereco id postgres
+4698; 2604 26374 DEFAULT cep estado id postgres
+4700; 2604 26375 DEFAULT cep logradouro id postgres
+4701; 2604 26376 DEFAULT cep logradouro_tipo id postgres
+4703; 2604 26377 DEFAULT cep pais id postgres
+4704; 2604 26378 DEFAULT escala escala id postgres
+4707; 2604 26379 DEFAULT escala escala_item id postgres
+4710; 2604 26380 DEFAULT esocial afastamento_temporario_tipo id postgres
+4711; 2604 26381 DEFAULT esocial campos_para_validacao id postgres
+4712; 2604 26382 DEFAULT esocial config_data_inicio id postgres
+4713; 2604 26383 DEFAULT esocial lote id postgres
+4715; 2604 26384 DEFAULT esocial ocorrencia id postgres
+4716; 2604 26385 DEFAULT esocial ocorrencia_rel_lote id postgres
+4717; 2604 26386 DEFAULT estagiario agente_integrador id postgres
+4718; 2604 26387 DEFAULT estagiario instituicao_ensino id postgres
+4720; 2604 26388 DEFAULT folha folha id postgres
+4721; 2604 26389 DEFAULT folha folha_rel_vinculo_funcional id postgres
+4722; 2604 26390 DEFAULT folha folha_status id postgres
+4681; 2604 26391 DEFAULT folha folha_tipo id postgres
+4726; 2604 26392 DEFAULT folha folha_tipo_arquivo id postgres
+4727; 2604 26393 DEFAULT folha folha_tipo_rel_folha_tipo_arquivo id postgres
+4728; 2604 26394 DEFAULT folha folha_tipo_rel_folha_tipo_relatorio id postgres
+4730; 2604 26395 DEFAULT folha folha_tipo_relatorio id postgres
+4732; 2604 26396 DEFAULT folha fonte_recurso id postgres
+4733; 2604 26397 DEFAULT folha grupo_rubrica id postgres
+4731; 2604 26398 DEFAULT folha iper_folhas id postgres
+4749; 2604 26399 DEFAULT folha lancamento id postgres
+4751; 2604 26400 DEFAULT folha lancamento_automatico_excluido id postgres
+4752; 2604 26401 DEFAULT folha lancamento_processado id postgres
+4753; 2604 26402 DEFAULT folha lancamento_processado_resumo id postgres
+4689; 2604 26403 DEFAULT folha rubrica id postgres
+4754; 2604 26404 DEFAULT folha rubrica_incidencia id postgres
+4755; 2604 26405 DEFAULT folha rubrica_rel_folha_tipo id postgres
+4756; 2604 26406 DEFAULT folha rubrica_rel_grupo id postgres
+4757; 2604 26407 DEFAULT folha salario_piso_teto id postgres
+4759; 2604 26408 DEFAULT folha tabela_irpf id postgres
+4760; 2604 26409 DEFAULT folha tabela_irpf_aliquota id postgres
+4761; 2604 26410 DEFAULT folha tabela_previdencia id postgres
+4762; 2604 26411 DEFAULT folha tabela_previdencia_aliquota id postgres
+4764; 2604 26412 DEFAULT folha variavel id postgres
+4765; 2604 26413 DEFAULT log auditoria pkyaud postgres
+4768; 2604 26414 DEFAULT log log_aplicacao id postgres
+4769; 2604 26415 DEFAULT log logs id postgres
+4770; 2604 26416 DEFAULT ponto_eletronico banco_hora id postgres
+4773; 2604 26417 DEFAULT ponto_eletronico banco_hora_saldo id postgres
+4777; 2604 26418 DEFAULT ponto_eletronico banco_hora_tipo id postgres
+4782; 2604 26419 DEFAULT ponto_eletronico dia_semana id postgres
+4783; 2604 26420 DEFAULT ponto_eletronico jornada_trabalho id postgres
+4784; 2604 26421 DEFAULT ponto_eletronico jornada_trabalho_rel_dia_semana id postgres
+4775; 2604 26422 DEFAULT ponto_eletronico justificativa_registro_ponto id postgres
+4785; 2604 26423 DEFAULT ponto_eletronico justificativa_registro_ponto_item id postgres
+4781; 2604 26424 DEFAULT ponto_eletronico justificativa_tipo id postgres
+4786; 2604 26425 DEFAULT ponto_eletronico regime_rel_jornada_trabalho id postgres
+4787; 2604 26426 DEFAULT ponto_eletronico regime_trabalho id postgres
+4791; 2604 26427 DEFAULT ponto_eletronico registro_ponto id postgres
+4793; 2604 26428 DEFAULT ponto_eletronico relogio_de_ponto id postgres
+4798; 2604 26429 DEFAULT ponto_eletronico setor_resumo_mensal id postgres
+4795; 2604 26430 DEFAULT ponto_eletronico vinculo_rel_regime_trabalho id postgres
+4800; 2604 26431 DEFAULT ponto_eletronico vinculo_resumo_mensal id postgres
+4763; 2604 26432 DEFAULT previdencia regime_previdenciario id postgres
+4691; 2604 26433 DEFAULT previdencia regime_previdenciario_fundo id postgres
+4801; 2604 26434 DEFAULT previdencia vigencia_patronal id postgres
+4802; 2604 26435 DEFAULT public agencia id postgres
+4805; 2604 26436 DEFAULT public anexo id postgres
+4806; 2604 26437 DEFAULT public arquivo id postgres
+4789; 2604 26438 DEFAULT public arquivo_propriedade id postgres
+4803; 2604 26439 DEFAULT public banco id postgres
+4811; 2604 26440 DEFAULT public conta_bancaria id postgres
+4812; 2604 26441 DEFAULT public contato_tipo id postgres
+4813; 2604 26442 DEFAULT public deficiencia_tipo id postgres
+4814; 2604 26443 DEFAULT public documento_cnh id postgres
+4815; 2604 26444 DEFAULT public documento_ctps id postgres
+4816; 2604 26445 DEFAULT public documento_identidade_profissional id postgres
+4817; 2604 26446 DEFAULT public documento_reservista id postgres
+4818; 2604 26447 DEFAULT public documento_rg id postgres
+4819; 2604 26448 DEFAULT public documento_tipo id postgres
+4821; 2604 26449 DEFAULT public documento_titulo_eleitor id postgres
+4823; 2604 26450 DEFAULT public empresa id postgres
+4826; 2604 26451 DEFAULT public empresa_old id postgres
+4828; 2604 26452 DEFAULT public empresa_rel_modulo id postgres
+4830; 2604 26453 DEFAULT public empresa_responsavel id postgres
+4831; 2604 26454 DEFAULT public empresa_responsavel_old id postgres
+4832; 2604 26455 DEFAULT public empresa_responsavel_relatorio id postgres
+4833; 2604 26456 DEFAULT public empresa_responsavel_tipo id postgres
+4834; 2604 26457 DEFAULT public estado_civil id postgres
+4809; 2604 26458 DEFAULT public feriado id postgres
+4829; 2604 26459 DEFAULT public modulo id postgres
+4670; 2604 26460 DEFAULT public nivel_formacao id postgres
+4738; 2604 26461 DEFAULT public pessoa id postgres
+4837; 2604 26462 DEFAULT public pessoa_contato id postgres
+4839; 2604 26463 DEFAULT public pessoa_documento id postgres
+4840; 2604 26464 DEFAULT public pessoa_rel_deficiencia id postgres
+4842; 2604 26465 DEFAULT public pessoa_rel_endereco id postgres
+4845; 2604 26466 DEFAULT public plano_saude id postgres
+4843; 2604 26467 DEFAULT public raca id postgres
+4844; 2604 26468 DEFAULT public sexo id postgres
+4846; 2604 26469 DEFAULT public tipo_sanguineo id postgres
+4848; 2604 26470 DEFAULT public versao_scripts_bd id postgres
+4849; 2604 26471 DEFAULT rescisao rescisao id postgres
+4854; 2604 26472 DEFAULT seguranca grupo_permissao id postgres
+4855; 2604 26473 DEFAULT seguranca perfil id postgres
+4850; 2604 26474 DEFAULT seguranca perfil_rel_usuario id postgres
+4852; 2604 26475 DEFAULT seguranca permissao id postgres
+4853; 2604 26476 DEFAULT seguranca permissao_rel_perfil id postgres
+4856; 2604 26477 DEFAULT seguranca recuperar_senha id postgres
+4724; 2604 26478 DEFAULT seguranca usuario id postgres
+4858; 2604 26479 DEFAULT setor nivel_hierarquico id postgres
+4709; 2604 26480 DEFAULT setor setor id postgres
+4859; 2604 26481 DEFAULT setor setor_contato id postgres
+4860; 2604 26482 DEFAULT setor setor_rel_unidade id postgres
+4862; 2604 26483 DEFAULT setor setor_tipo id postgres
+4861; 2604 26484 DEFAULT setor unidade id postgres
+4865; 2604 26485 DEFAULT vinculo adicional_tipo id postgres
+4866; 2604 26486 DEFAULT vinculo afastamento id postgres
+4868; 2604 26487 DEFAULT vinculo afastamento_configuracao id postgres
+4871; 2604 26488 DEFAULT vinculo afastamento_tipo id postgres
+4873; 2604 26489 DEFAULT vinculo anexo id postgres
+4874; 2604 26490 DEFAULT vinculo anotacao id postgres
+4875; 2604 26491 DEFAULT vinculo anotacao_tipo id postgres
+4876; 2604 26492 DEFAULT vinculo auxilio_saude id postgres
+4877; 2604 26493 DEFAULT vinculo averbacoes_efeito id postgres
+4878; 2604 26494 DEFAULT vinculo averbacoes_origem id postgres
+4885; 2604 26495 DEFAULT vinculo cedencia id postgres
+4888; 2604 26496 DEFAULT vinculo credito_para_terceiro id postgres
+4889; 2604 26497 DEFAULT vinculo credito_para_terceiro_anexo id postgres
+4890; 2604 26498 DEFAULT vinculo credito_para_terceiro_incidencia id postgres
+4891; 2604 26499 DEFAULT vinculo credito_para_terceiro_rel_folha_tipo id postgres
+4896; 2604 26500 DEFAULT vinculo dependente id postgres
+4897; 2604 26501 DEFAULT vinculo estagio id postgres
+4898; 2604 26502 DEFAULT vinculo estagio_natureza id postgres
+4899; 2604 26503 DEFAULT vinculo estagio_tipo id postgres
+4879; 2604 26504 DEFAULT vinculo ferias id postgres
+4902; 2604 26505 DEFAULT vinculo ferias_configuracao_desconto id postgres
+4882; 2604 26506 DEFAULT vinculo ferias_gozo id postgres
+4904; 2604 26507 DEFAULT vinculo gratificacoes_tipo id postgres
+4905; 2604 26508 DEFAULT vinculo incorporacoes_tipo id postgres
+4906; 2604 26509 DEFAULT vinculo informacao_curricular id postgres
+4907; 2604 26510 DEFAULT vinculo informacao_curricular_area id postgres
+4908; 2604 26511 DEFAULT vinculo informacao_curricular_nivel_curso id postgres
+4797; 2604 26512 DEFAULT vinculo lotacao id postgres
+4910; 2604 26513 DEFAULT vinculo pensao id postgres
+4911; 2604 26514 DEFAULT vinculo pensao_rel_folha_tipo id postgres
+4912; 2604 26515 DEFAULT vinculo pensao_rel_pensionista id postgres
+4913; 2604 26516 DEFAULT vinculo pensao_representante_tipo id postgres
+4914; 2604 26517 DEFAULT vinculo pensao_tipo id postgres
+4915; 2604 26518 DEFAULT vinculo pensao_tipo_rel_incidencia id postgres
+4917; 2604 26519 DEFAULT vinculo substituicao id postgres
+4918; 2604 26520 DEFAULT vinculo tipo_admissao id postgres
+4741; 2604 26521 DEFAULT vinculo vinculo_cargo id postgres
+4744; 2604 26522 DEFAULT vinculo vinculo_funcional id postgres
+4919; 2604 26523 DEFAULT vinculo vinculo_funcional_adicional id postgres
+4920; 2604 26524 DEFAULT vinculo vinculo_funcional_gratificacoes id postgres
+4921; 2604 26525 DEFAULT vinculo vinculo_funcional_incorporacoes id postgres
+5940; 0 24795 TABLE DATA categoria_funcional agregacao postgres
+5943; 0 24821 TABLE DATA categoria_funcional area_atuacao postgres
+5945; 0 24825 TABLE DATA categoria_funcional cargo postgres
+5947; 0 24834 TABLE DATA categoria_funcional cargo_nivel postgres
+5949; 0 24838 TABLE DATA categoria_funcional cargo_rel_cargo_nivel postgres
+5942; 0 24802 TABLE DATA categoria_funcional categoria postgres
+5954; 0 24872 TABLE DATA categoria_funcional categoria_rubrica_padrao postgres
+5959; 0 24918 TABLE DATA categoria_funcional reajuste_salarial postgres
+5961; 0 24924 TABLE DATA categoria_funcional reajuste_valor_nivel postgres
+5963; 0 24937 TABLE DATA categoria_funcional tipo_vinculo_empregaticio postgres
+5950; 0 24841 TABLE DATA categoria_funcional vinculo_tipo postgres
+5966; 0 24944 TABLE DATA cep bairro postgres
+5968; 0 24950 TABLE DATA cep cidade postgres
+5970; 0 24954 TABLE DATA cep endereco postgres
+5971; 0 24959 TABLE DATA cep estado postgres
+5972; 0 24964 TABLE DATA cep logradouro postgres
+5973; 0 24970 TABLE DATA cep logradouro_tipo postgres
+5978; 0 24989 TABLE DATA cep pais postgres
+5980; 0 25001 TABLE DATA escala escala postgres
+5982; 0 25008 TABLE DATA escala escala_item postgres
+5985; 0 25026 TABLE DATA esocial afastamento_temporario_tipo postgres
+5987; 0 25032 TABLE DATA esocial campos_para_validacao postgres
+5989; 0 25038 TABLE DATA esocial categoria_do_trabalhador postgres
+5990; 0 25043 TABLE DATA esocial classificacao_tributaria postgres
+5991; 0 25048 TABLE DATA esocial config_data_inicio postgres
+5993; 0 25054 TABLE DATA esocial extensao_em_processo_cp postgres
+5994; 0 25059 TABLE DATA esocial grau_instrucao postgres
+5995; 0 25064 TABLE DATA esocial incidencia_tributaria_da_rubrica_cprp postgres
+5996; 0 25069 TABLE DATA esocial incidencia_tributaria_da_rubrica_fgts postgres
+5997; 0 25074 TABLE DATA esocial incidencia_tributaria_da_rubrica_irrf postgres
+5998; 0 25079 TABLE DATA esocial incidencia_tributaria_da_rubrica_prev postgres
+5999; 0 25084 TABLE DATA esocial indicativo_periodo_apuracao postgres
+6000; 0 25089 TABLE DATA esocial lotao_tributaria postgres
+6001; 0 25094 TABLE DATA esocial lote postgres
+6003; 0 25100 TABLE DATA esocial lotes_itens postgres
+6004; 0 25103 TABLE DATA esocial motivo_desligamento postgres
+6005; 0 25108 TABLE DATA esocial natureza_de_rubrica postgres
+6006; 0 25113 TABLE DATA esocial ocorrencia postgres
+6008; 0 25120 TABLE DATA esocial ocorrencia_rel_lote postgres
+6012; 0 25141 TABLE DATA esocial s_1010_rubrica postgres
+6013; 0 25146 TABLE DATA esocial tipo_condicao_ingresso_imigrante postgres
+6014; 0 25151 TABLE DATA esocial tipo_de_provimento_do_cargo postgres
+6015; 0 25156 TABLE DATA esocial tipo_de_rubrica postgres
+6010; 0 25126 TABLE DATA esocial tipo_operacao postgres
+6011; 0 25131 TABLE DATA esocial tipo_situacao_ocorrencia postgres
+6016; 0 25161 TABLE DATA esocial tipo_tempo_residencia_imigrante postgres
+6017; 0 25166 TABLE DATA esocial tipos_de_dependente postgres
+6018; 0 25171 TABLE DATA esocial trabalhador_cadastro_inicial postgres
+6019; 0 25176 TABLE DATA estagiario agente_integrador postgres
+6021; 0 25182 TABLE DATA estagiario instituicao_ensino postgres
+6023; 0 25188 TABLE DATA folha folha postgres
+6025; 0 25195 TABLE DATA folha folha_rel_vinculo_funcional postgres
+6027; 0 25199 TABLE DATA folha folha_status postgres
+5956; 0 24878 TABLE DATA folha folha_tipo postgres
+6030; 0 25215 TABLE DATA folha folha_tipo_arquivo postgres
+6033; 0 25223 TABLE DATA folha folha_tipo_rel_folha_tipo_arquivo postgres
+6035; 0 25231 TABLE DATA folha folha_tipo_rel_folha_tipo_relatorio postgres
+6037; 0 25235 TABLE DATA folha folha_tipo_relatorio postgres
+6040; 0 25261 TABLE DATA folha fonte_recurso postgres
+6042; 0 25267 TABLE DATA folha grupo_rubrica postgres
+6044; 0 25271 TABLE DATA folha historico_financeiro postgres
+6045; 0 25276 TABLE DATA folha historico_financeiro_resumo postgres
+6039; 0 25246 TABLE DATA folha iper_folhas postgres
+6050; 0 25310 TABLE DATA folha lancamento postgres
+6051; 0 25320 TABLE DATA folha lancamento_automatico_excluido postgres
+6055; 0 25335 TABLE DATA folha lancamento_periodos_nao_processar postgres
+6053; 0 25324 TABLE DATA folha lancamento_processado postgres
+6057; 0 25339 TABLE DATA folha lancamento_processado_resumo postgres
+5957; 0 24891 TABLE DATA folha rubrica postgres
+6061; 0 25357 TABLE DATA folha rubrica_incidencia postgres
+6063; 0 25366 TABLE DATA folha rubrica_rel_folha_tipo postgres
+6065; 0 25374 TABLE DATA folha rubrica_rel_grupo postgres
+6067; 0 25388 TABLE DATA folha salario_piso_teto postgres
+6069; 0 25400 TABLE DATA folha tabela_irpf postgres
+6070; 0 25405 TABLE DATA folha tabela_irpf_aliquota postgres
+6073; 0 25412 TABLE DATA folha tabela_previdencia postgres
+6074; 0 25417 TABLE DATA folha tabela_previdencia_aliquota postgres
+6078; 0 25433 TABLE DATA folha variavel postgres
+6080; 0 25439 TABLE DATA log auditoria postgres
+6082; 0 25446 TABLE DATA log log_aplicacao postgres
+6084; 0 25453 TABLE DATA log logs postgres
+6086; 0 25464 TABLE DATA ponto_eletronico banco_hora postgres
+6088; 0 25470 TABLE DATA ponto_eletronico banco_hora_saldo postgres
+6091; 0 25488 TABLE DATA ponto_eletronico banco_hora_tipo postgres
+6094; 0 25507 TABLE DATA ponto_eletronico dia_semana postgres
+6096; 0 25513 TABLE DATA ponto_eletronico jornada_trabalho postgres
+6098; 0 25517 TABLE DATA ponto_eletronico jornada_trabalho_rel_dia_semana postgres
+6100; 0 25525 TABLE DATA ponto_eletronico jornadas_json postgres
+6090; 0 25476 TABLE DATA ponto_eletronico justificativa_registro_ponto postgres
+6102; 0 25531 TABLE DATA ponto_eletronico justificativa_registro_ponto_item postgres
+6093; 0 25494 TABLE DATA ponto_eletronico justificativa_tipo postgres
+6105; 0 25540 TABLE DATA ponto_eletronico regime_rel_jornada_trabalho postgres
+6107; 0 25548 TABLE DATA ponto_eletronico regime_trabalho postgres
+6110; 0 25565 TABLE DATA ponto_eletronico registro_ponto postgres
+6112; 0 25572 TABLE DATA ponto_eletronico relogio_de_ponto postgres
+6116; 0 25596 TABLE DATA ponto_eletronico setor_resumo_mensal postgres
+6114; 0 25579 TABLE DATA ponto_eletronico vinculo_rel_regime_trabalho postgres
+6119; 0 25607 TABLE DATA ponto_eletronico vinculo_resumo_mensal postgres
+6077; 0 25424 TABLE DATA previdencia regime_previdenciario postgres
+5958; 0 24908 TABLE DATA previdencia regime_previdenciario_fundo postgres
+6123; 0 25616 TABLE DATA previdencia vigencia_patronal postgres
+6125; 0 25622 TABLE DATA public agencia postgres
+6128; 0 25633 TABLE DATA public anexo postgres
+6130; 0 25640 TABLE DATA public arquivo postgres
+6109; 0 25554 TABLE DATA public arquivo_propriedade postgres
+6127; 0 25626 TABLE DATA public banco postgres
+6135; 0 25660 TABLE DATA public conta_bancaria postgres
+6137; 0 25667 TABLE DATA public conta_bancaria_tipo postgres
+6138; 0 25677 TABLE DATA public contato_tipo postgres
+6140; 0 25683 TABLE DATA public deficiencia_tipo postgres
+6142; 0 25689 TABLE DATA public documento_cnh postgres
+6144; 0 25695 TABLE DATA public documento_ctps postgres
+6146; 0 25701 TABLE DATA public documento_identidade_profissional postgres
+6148; 0 25707 TABLE DATA public documento_reservista postgres
+6150; 0 25713 TABLE DATA public documento_rg postgres
+6152; 0 25719 TABLE DATA public documento_tipo postgres
+6154; 0 25726 TABLE DATA public documento_titulo_eleitor postgres
+6156; 0 25732 TABLE DATA public empresa postgres
+6157; 0 25739 TABLE DATA public empresa_old postgres
+6160; 0 25748 TABLE DATA public empresa_rel_modulo postgres
+6163; 0 25761 TABLE DATA public empresa_responsavel postgres
+6164; 0 25766 TABLE DATA public empresa_responsavel_old postgres
+6167; 0 25773 TABLE DATA public empresa_responsavel_relatorio postgres
+6169; 0 25781 TABLE DATA public empresa_responsavel_tipo postgres
+6172; 0 25802 TABLE DATA public estado_civil postgres
+6134; 0 25648 TABLE DATA public feriado postgres
+6308; 0 33214 TABLE DATA public jasper postgres
+6162; 0 25752 TABLE DATA public modulo postgres
+5952; 0 24861 TABLE DATA public nivel_formacao postgres
+6179; 0 25817 TABLE DATA public parametro postgres
+6046; 0 25281 TABLE DATA public pessoa postgres
+6180; 0 25823 TABLE DATA public pessoa_contato postgres
+6182; 0 25834 TABLE DATA public pessoa_documento postgres
+6185; 0 25842 TABLE DATA public pessoa_rel_deficiencia postgres
+6187; 0 25846 TABLE DATA public pessoa_rel_endereco postgres
+6191; 0 25871 TABLE DATA public plano_saude postgres
+6189; 0 25856 TABLE DATA public raca postgres
+6190; 0 25861 TABLE DATA public sexo postgres
+6171; 0 25787 TABLE DATA public tipo_empresa_resposavel postgres
+6195; 0 25879 TABLE DATA public tipo_sanguineo postgres
+6197; 0 25885 TABLE DATA public versao postgres
+6198; 0 25888 TABLE DATA public versao_scripts_bd postgres
+6200; 0 25895 TABLE DATA rescisao rescisao postgres
+6205; 0 25920 TABLE DATA seguranca grupo_permissao postgres
+6207; 0 25926 TABLE DATA seguranca perfil postgres
+6202; 0 25901 TABLE DATA seguranca perfil_rel_usuario postgres
+6203; 0 25906 TABLE DATA seguranca permissao postgres
+6204; 0 25912 TABLE DATA seguranca permissao_rel_perfil postgres
+6212; 0 25944 TABLE DATA seguranca recuperar_senha postgres
+6029; 0 25206 TABLE DATA seguranca usuario postgres
+6215; 0 25956 TABLE DATA setor nivel_hierarquico postgres
+5984; 0 25015 TABLE DATA setor setor postgres
+6217; 0 25963 TABLE DATA setor setor_contato postgres
+6220; 0 25974 TABLE DATA setor setor_rel_unidade postgres
+6223; 0 25987 TABLE DATA setor setor_tipo postgres
+6222; 0 25978 TABLE DATA setor unidade postgres
+6226; 0 25999 TABLE DATA vinculo adicional_tipo postgres
+6228; 0 26007 TABLE DATA vinculo afastamento postgres
+6229; 0 26012 TABLE DATA vinculo afastamento_configuracao postgres
+6232; 0 26018 TABLE DATA vinculo afastamento_tipo postgres
+6234; 0 26031 TABLE DATA vinculo anexo postgres
+6236; 0 26043 TABLE DATA vinculo anotacao postgres
+6238; 0 26049 TABLE DATA vinculo anotacao_tipo postgres
+6240; 0 26055 TABLE DATA vinculo auxilio_saude postgres
+6242; 0 26061 TABLE DATA vinculo averbacoes_efeito postgres
+6244; 0 26067 TABLE DATA vinculo averbacoes_origem postgres
+6248; 0 26090 TABLE DATA vinculo cedencia postgres
+6250; 0 26104 TABLE DATA vinculo credito_para_terceiro postgres
+6251; 0 26110 TABLE DATA vinculo credito_para_terceiro_anexo postgres
+6254; 0 26120 TABLE DATA vinculo credito_para_terceiro_incidencia postgres
+6256; 0 26129 TABLE DATA vinculo credito_para_terceiro_rel_folha_tipo postgres
+6259; 0 26154 TABLE DATA vinculo dependente postgres
+6261; 0 26168 TABLE DATA vinculo estagio postgres
+6263; 0 26174 TABLE DATA vinculo estagio_natureza postgres
+6265; 0 26180 TABLE DATA vinculo estagio_tipo postgres
+6246; 0 26073 TABLE DATA vinculo ferias postgres
+6267; 0 26191 TABLE DATA vinculo ferias_configuracao_desconto postgres
+6247; 0 26078 TABLE DATA vinculo ferias_gozo postgres
+6272; 0 26205 TABLE DATA vinculo ferias_tipo_calculo postgres
+6273; 0 26215 TABLE DATA vinculo gratificacoes_tipo postgres
+6275; 0 26221 TABLE DATA vinculo incorporacoes_tipo postgres
+6277; 0 26227 TABLE DATA vinculo informacao_curricular postgres
+6278; 0 26232 TABLE DATA vinculo informacao_curricular_area postgres
+6281; 0 26239 TABLE DATA vinculo informacao_curricular_nivel_curso postgres
+6115; 0 25585 TABLE DATA vinculo lotacao postgres
+6284; 0 26256 TABLE DATA vinculo pensao postgres
+6286; 0 26261 TABLE DATA vinculo pensao_rel_folha_tipo postgres
+6288; 0 26270 TABLE DATA vinculo pensao_rel_pensionista postgres
+6290; 0 26281 TABLE DATA vinculo pensao_representante_tipo postgres
+6292; 0 26287 TABLE DATA vinculo pensao_tipo postgres
+6294; 0 26293 TABLE DATA vinculo pensao_tipo_rel_incidencia postgres
+6296; 0 26307 TABLE DATA vinculo substituicao postgres
+6298; 0 26319 TABLE DATA vinculo tipo_admissao postgres
+6258; 0 26143 TABLE DATA vinculo tipo_decimo_terceiro postgres
+6047; 0 25290 TABLE DATA vinculo vinculo_cargo postgres
+6048; 0 25297 TABLE DATA vinculo vinculo_funcional postgres
+6301; 0 26331 TABLE DATA vinculo vinculo_funcional_adicional postgres
+6303; 0 26342 TABLE DATA vinculo vinculo_funcional_gratificacoes postgres
+6306; 0 26349 TABLE DATA vinculo vinculo_funcional_incorporacoes postgres
+6507; 0 0 SEQUENCE SET categoria_funcional agregacao_id_seq postgres
+6508; 0 0 SEQUENCE SET categoria_funcional area_atuacao_id_seq postgres
+6509; 0 0 SEQUENCE SET categoria_funcional cargo_id_seq postgres
+6510; 0 0 SEQUENCE SET categoria_funcional cargo_nivel_id_seq postgres
+6511; 0 0 SEQUENCE SET categoria_funcional cargo_rel_cargo_nivel_id_seq postgres
+6512; 0 0 SEQUENCE SET categoria_funcional categoria_id_seq postgres
+6513; 0 0 SEQUENCE SET categoria_funcional categoria_rubrica_padrao_id_seq postgres
+6514; 0 0 SEQUENCE SET categoria_funcional reajuste_salarial_id_seq postgres
+6515; 0 0 SEQUENCE SET categoria_funcional reajuste_valor_nivel_id_seq postgres
+6516; 0 0 SEQUENCE SET categoria_funcional tipo_vinculo_empregaticio_id_seq postgres
+6517; 0 0 SEQUENCE SET categoria_funcional vinculo_tipo_id_seq postgres
+6518; 0 0 SEQUENCE SET cep bairro_id_seq postgres
+6519; 0 0 SEQUENCE SET cep cidade_id_seq postgres
+6520; 0 0 SEQUENCE SET cep endereco_id_seq postgres
+6521; 0 0 SEQUENCE SET cep estado_id_seq postgres
+6522; 0 0 SEQUENCE SET cep logradouro_id_seq postgres
+6523; 0 0 SEQUENCE SET cep logradouro_tipo_id_seq postgres
+6524; 0 0 SEQUENCE SET cep pais_id_seq postgres
+6525; 0 0 SEQUENCE SET escala escala_id_seq postgres
+6526; 0 0 SEQUENCE SET escala escala_item_id_seq postgres
+6527; 0 0 SEQUENCE SET esocial afastamento_temporario_tipo_id_seq postgres
+6528; 0 0 SEQUENCE SET esocial campos_para_validacao_id_seq postgres
+6529; 0 0 SEQUENCE SET esocial config_data_inicio_id_seq postgres
+6530; 0 0 SEQUENCE SET esocial lote_id_seq postgres
+6531; 0 0 SEQUENCE SET esocial ocorrencia_id_seq postgres
+6532; 0 0 SEQUENCE SET esocial ocorrencia_rel_lote_id_seq postgres
+6533; 0 0 SEQUENCE SET estagiario agente_integrador_id_seq postgres
+6534; 0 0 SEQUENCE SET estagiario instituicao_ensino_id_seq postgres
+6535; 0 0 SEQUENCE SET folha folha_id_seq postgres
+6536; 0 0 SEQUENCE SET folha folha_rel_vinculo_funcional_id_seq postgres
+6537; 0 0 SEQUENCE SET folha folha_status_id_seq postgres
+6538; 0 0 SEQUENCE SET folha folha_tipo_arquivo_id_seq postgres
+6539; 0 0 SEQUENCE SET folha folha_tipo_id_seq postgres
+6540; 0 0 SEQUENCE SET folha folha_tipo_rel_folha_tipo_arquivo_id_seq postgres
+6541; 0 0 SEQUENCE SET folha folha_tipo_rel_folha_tipo_relatorio_id_seq postgres
+6542; 0 0 SEQUENCE SET folha folha_tipo_relatorio_id_seq postgres
+6543; 0 0 SEQUENCE SET folha fonte_recurso_id_seq postgres
+6544; 0 0 SEQUENCE SET folha grupo_rubrica_id_seq postgres
+6545; 0 0 SEQUENCE SET folha iper_folhas_id_seq postgres
+6546; 0 0 SEQUENCE SET folha lancamento_automatico_excluido_id_seq postgres
+6547; 0 0 SEQUENCE SET folha lancamento_id_seq postgres
+6548; 0 0 SEQUENCE SET folha lancamento_processado_id_seq postgres
+6549; 0 0 SEQUENCE SET folha lancamento_processado_resumo_id_seq postgres
+6550; 0 0 SEQUENCE SET folha lancamento_temp_id_seq postgres
+6551; 0 0 SEQUENCE SET folha rubrica_id_seq postgres
+6552; 0 0 SEQUENCE SET folha rubrica_incidencia_id_seq postgres
+6553; 0 0 SEQUENCE SET folha rubrica_rel_folha_tipo_id_seq postgres
+6554; 0 0 SEQUENCE SET folha rubrica_rel_grupo_id_seq postgres
+6555; 0 0 SEQUENCE SET folha salario_piso_teto_id_seq postgres
+6556; 0 0 SEQUENCE SET folha tabela_irpf_aliquota_id_seq postgres
+6557; 0 0 SEQUENCE SET folha tabela_irpf_id_seq postgres
+6558; 0 0 SEQUENCE SET folha tabela_previdencia_aliquota_id_seq postgres
+6559; 0 0 SEQUENCE SET folha tabela_previdencia_id_seq postgres
+6560; 0 0 SEQUENCE SET folha variavel_id_seq postgres
+6561; 0 0 SEQUENCE SET log auditoria_pkyaud_seq postgres
+6562; 0 0 SEQUENCE SET log log_aplicacao_id_seq postgres
+6563; 0 0 SEQUENCE SET log logs_id_seq postgres
+6564; 0 0 SEQUENCE SET ponto_eletronico banco_hora_id_seq postgres
+6565; 0 0 SEQUENCE SET ponto_eletronico banco_hora_saldo_id_seq postgres
+6566; 0 0 SEQUENCE SET ponto_eletronico banco_hora_tipo_id_seq postgres
+6567; 0 0 SEQUENCE SET ponto_eletronico dia_semana_id_seq postgres
+6568; 0 0 SEQUENCE SET ponto_eletronico jornada_trabalho_id_seq postgres
+6569; 0 0 SEQUENCE SET ponto_eletronico jornada_trabalho_rel_dia_semana_id_seq postgres
+6570; 0 0 SEQUENCE SET ponto_eletronico justificativa_registro_ponto_id_seq postgres
+6571; 0 0 SEQUENCE SET ponto_eletronico justificativa_registro_ponto_item_id_seq postgres
+6572; 0 0 SEQUENCE SET ponto_eletronico justificativa_tipo_id_seq postgres
+6573; 0 0 SEQUENCE SET ponto_eletronico regime_rel_jornada_trabalho_id_seq postgres
+6574; 0 0 SEQUENCE SET ponto_eletronico regime_trabalho_id_seq postgres
+6575; 0 0 SEQUENCE SET ponto_eletronico registro_ponto_id_seq postgres
+6576; 0 0 SEQUENCE SET ponto_eletronico relogio_de_ponto_id_seq postgres
+6577; 0 0 SEQUENCE SET ponto_eletronico setor_resumo_mensal_id_seq postgres
+6578; 0 0 SEQUENCE SET ponto_eletronico vinculo_rel_regime_trabalho_id_seq postgres
+6579; 0 0 SEQUENCE SET ponto_eletronico vinculo_resumo_mensal_id_seq postgres
+6580; 0 0 SEQUENCE SET previdencia regime_previdenciario_fundo_id_seq postgres
+6581; 0 0 SEQUENCE SET previdencia regime_previdenciario_id_seq postgres
+6582; 0 0 SEQUENCE SET previdencia vigencia_patronal_id_seq postgres
+6583; 0 0 SEQUENCE SET public agencia_id_seq postgres
+6584; 0 0 SEQUENCE SET public anexo_id_seq postgres
+6585; 0 0 SEQUENCE SET public arquivo_id_seq postgres
+6586; 0 0 SEQUENCE SET public arquivo_propriedade_id_seq postgres
+6587; 0 0 SEQUENCE SET public banco_id_seq postgres
+6588; 0 0 SEQUENCE SET public conta_bancaria_id_seq postgres
+6589; 0 0 SEQUENCE SET public contato_tipo_id_seq postgres
+6590; 0 0 SEQUENCE SET public deficiencia_tipo_id_seq postgres
+6591; 0 0 SEQUENCE SET public documento_cnh_id_seq postgres
+6592; 0 0 SEQUENCE SET public documento_ctps_id_seq postgres
+6593; 0 0 SEQUENCE SET public documento_identidade_profissional_id_seq postgres
+6594; 0 0 SEQUENCE SET public documento_reservista_id_seq postgres
+6595; 0 0 SEQUENCE SET public documento_rg_id_seq postgres
+6596; 0 0 SEQUENCE SET public documento_tipo_id_seq postgres
+6597; 0 0 SEQUENCE SET public documento_titulo_eleitor_id_seq postgres
+6598; 0 0 SEQUENCE SET public empresa_id_seq postgres
+6599; 0 0 SEQUENCE SET public empresa_id_seq1 postgres
+6600; 0 0 SEQUENCE SET public empresa_rel_modulo_id_seq postgres
+6601; 0 0 SEQUENCE SET public empresa_responsavel_id_seq postgres
+6602; 0 0 SEQUENCE SET public empresa_responsavel_id_seq1 postgres
+6603; 0 0 SEQUENCE SET public empresa_responsavel_relatorio_id_seq postgres
+6604; 0 0 SEQUENCE SET public empresa_responsavel_tipo_id_seq postgres
+6605; 0 0 SEQUENCE SET public estado_civil_id_seq postgres
+6606; 0 0 SEQUENCE SET public feriado_id_seq postgres
+6607; 0 0 SEQUENCE SET public modulo_id_seq postgres
+6608; 0 0 SEQUENCE SET public nivel_formacao_id_seq postgres
+6609; 0 0 SEQUENCE SET public notificacao_id_seq_temp postgres
+6610; 0 0 SEQUENCE SET public parametro_id_seq postgres
+6611; 0 0 SEQUENCE SET public pessoa_contato_id_seq postgres
+6612; 0 0 SEQUENCE SET public pessoa_documento_id_seq postgres
+6613; 0 0 SEQUENCE SET public pessoa_id_seq postgres
+6614; 0 0 SEQUENCE SET public pessoa_rel_deficiencia_id_seq postgres
+6615; 0 0 SEQUENCE SET public pessoa_rel_endereco_id_seq postgres
+6616; 0 0 SEQUENCE SET public plano_saude_id_seq postgres
+6617; 0 0 SEQUENCE SET public raca_id_seq postgres
+6618; 0 0 SEQUENCE SET public sexo_id_seq postgres
+6619; 0 0 SEQUENCE SET public tipo_sanguineo_id_seq postgres
+6620; 0 0 SEQUENCE SET public versao_scripts_bd_id_seq postgres
+6621; 0 0 SEQUENCE SET rescisao rescisao_id_seq postgres
+6622; 0 0 SEQUENCE SET seguranca grupo_permissao_id_seq postgres
+6623; 0 0 SEQUENCE SET seguranca perfil_id_seq postgres
+6624; 0 0 SEQUENCE SET seguranca perfil_rel_usuario_id_seq postgres
+6625; 0 0 SEQUENCE SET seguranca permissao_id_seq postgres
+6626; 0 0 SEQUENCE SET seguranca permissao_rel_perfil_id_seq postgres
+6627; 0 0 SEQUENCE SET seguranca recuperar_senha_id_seq postgres
+6628; 0 0 SEQUENCE SET seguranca usuario_id_seq postgres
+6629; 0 0 SEQUENCE SET setor nivel_hierarquico_id_seq postgres
+6630; 0 0 SEQUENCE SET setor setor_contato_id_seq postgres
+6631; 0 0 SEQUENCE SET setor setor_id_seq postgres
+6632; 0 0 SEQUENCE SET setor setor_rel_unidade_id_seq postgres
+6633; 0 0 SEQUENCE SET setor setor_tipo_id_seq postgres
+6634; 0 0 SEQUENCE SET setor unidade_id_seq postgres
+6635; 0 0 SEQUENCE SET vinculo adicional_tipo_id_seq postgres
+6636; 0 0 SEQUENCE SET vinculo afastamento_configuracao_id_seq postgres
+6637; 0 0 SEQUENCE SET vinculo afastamento_id_seq postgres
+6638; 0 0 SEQUENCE SET vinculo afastamento_tipo_id_seq postgres
+6639; 0 0 SEQUENCE SET vinculo anexo_id_seq postgres
+6640; 0 0 SEQUENCE SET vinculo anotacao_id_seq postgres
+6641; 0 0 SEQUENCE SET vinculo anotacao_tipo_id_seq postgres
+6642; 0 0 SEQUENCE SET vinculo auxilio_saude_id_seq postgres
+6643; 0 0 SEQUENCE SET vinculo averbacoes_efeito_id_seq postgres
+6644; 0 0 SEQUENCE SET vinculo averbacoes_origem_id_seq postgres
+6645; 0 0 SEQUENCE SET vinculo cedencia_id_seq postgres
+6646; 0 0 SEQUENCE SET vinculo credito_para_terceiro_anexo_id_seq postgres
+6647; 0 0 SEQUENCE SET vinculo credito_para_terceiro_id_seq postgres
+6648; 0 0 SEQUENCE SET vinculo credito_para_terceiro_incidencia_id_seq postgres
+6649; 0 0 SEQUENCE SET vinculo credito_para_terceiro_rel_folha_tipo_id_seq postgres
+6650; 0 0 SEQUENCE SET vinculo dependente_id_seq postgres
+6651; 0 0 SEQUENCE SET vinculo estagio_id_seq postgres
+6652; 0 0 SEQUENCE SET vinculo estagio_natureza_id_seq postgres
+6653; 0 0 SEQUENCE SET vinculo estagio_tipo_id_seq postgres
+6654; 0 0 SEQUENCE SET vinculo ferias_configuracao_desconto_id_seq postgres
+6655; 0 0 SEQUENCE SET vinculo ferias_gozo_id_seq postgres
+6656; 0 0 SEQUENCE SET vinculo ferias_id_seq postgres
+6657; 0 0 SEQUENCE SET vinculo ferias_tipo_calculo_id_seq postgres
+6658; 0 0 SEQUENCE SET vinculo gratificacoes_tipo_id_seq postgres
+6659; 0 0 SEQUENCE SET vinculo incorporacoes_tipo_id_seq postgres
+6660; 0 0 SEQUENCE SET vinculo informacao_curricular_area_id_seq postgres
+6661; 0 0 SEQUENCE SET vinculo informacao_curricular_id_seq postgres
+6662; 0 0 SEQUENCE SET vinculo informacao_curricular_nivel_curso_id_seq postgres
+6663; 0 0 SEQUENCE SET vinculo lotacao_id_seq postgres
+6664; 0 0 SEQUENCE SET vinculo pensao_id_seq postgres
+6665; 0 0 SEQUENCE SET vinculo pensao_rel_folha_tipo_id_seq postgres
+6666; 0 0 SEQUENCE SET vinculo pensao_rel_pensionista_id_seq postgres
+6667; 0 0 SEQUENCE SET vinculo pensao_representante_tipo_id_seq postgres
+6668; 0 0 SEQUENCE SET vinculo pensao_tipo_id_seq postgres
+6669; 0 0 SEQUENCE SET vinculo pensao_tipo_rel_incidencia_id_seq postgres
+6670; 0 0 SEQUENCE SET vinculo substituicao_id_seq postgres
+6671; 0 0 SEQUENCE SET vinculo tipo_admissao_id_seq postgres
+6672; 0 0 SEQUENCE SET vinculo vinculo_cargo_id_seq postgres
+6673; 0 0 SEQUENCE SET vinculo vinculo_funcional_adicional_id_seq postgres
+6674; 0 0 SEQUENCE SET vinculo vinculo_funcional_gratificacoes_id_seq postgres
+6675; 0 0 SEQUENCE SET vinculo vinculo_funcional_id_seq postgres
+6676; 0 0 SEQUENCE SET vinculo vinculo_funcional_incorporacoes_id_seq postgres
+4923; 2606 27762 CONSTRAINT categoria_funcional agregacao pk_agregacao_vinculo postgres
+4929; 2606 27764 CONSTRAINT categoria_funcional area_atuacao pk_area_atuacao postgres
+4931; 2606 27766 CONSTRAINT categoria_funcional cargo pk_cargo postgres
+4927; 2606 27768 CONSTRAINT categoria_funcional categoria pk_categoria postgres
+4941; 2606 27770 CONSTRAINT categoria_funcional categoria_rubrica_padrao pk_categoria_rubrica_padrao postgres
+4933; 2606 27772 CONSTRAINT categoria_funcional cargo_nivel pk_nivel_cargo postgres
+4935; 2606 27774 CONSTRAINT categoria_funcional cargo_rel_cargo_nivel pk_nivel_por_cargo postgres
+4957; 2606 27776 CONSTRAINT categoria_funcional tipo_vinculo_empregaticio pk_tipo_vinculo_empregaticio postgres
+4937; 2606 27778 CONSTRAINT categoria_funcional vinculo_tipo pk_vinculo postgres
+4953; 2606 27780 CONSTRAINT categoria_funcional reajuste_salarial reajuste_salarial_pkey postgres
+4955; 2606 27782 CONSTRAINT categoria_funcional reajuste_valor_nivel reajuste_valor_nivel_pkey postgres
+4943; 2606 27784 CONSTRAINT categoria_funcional categoria_rubrica_padrao uk_categoria_rubrica_base postgres
+4925; 2606 27786 CONSTRAINT categoria_funcional agregacao un_agregacao_vinculo postgres
+4959; 2606 27788 CONSTRAINT cep bairro pk_bairro postgres
+4961; 2606 27790 CONSTRAINT cep cidade pk_cidade postgres
+4963; 2606 27792 CONSTRAINT cep endereco pk_enderecos postgres
+4965; 2606 27794 CONSTRAINT cep estado pk_estado postgres
+4967; 2606 27796 CONSTRAINT cep logradouro pk_logradouro postgres
+4971; 2606 27798 CONSTRAINT cep pais pk_pais postgres
+4969; 2606 27800 CONSTRAINT cep logradouro_tipo pk_tipo_logradouro postgres
+4973; 2606 27802 CONSTRAINT escala escala pk_escala postgres
+4977; 2606 27804 CONSTRAINT escala escala_item pk_escala_item postgres
+4975; 2606 27806 CONSTRAINT escala escala unq_escala postgres
+4983; 2606 27808 CONSTRAINT esocial campos_para_validacao campos_para_validacao_pkey postgres
+4987; 2606 27810 CONSTRAINT esocial categoria_do_trabalhador categoria_do_trabalhador_pk postgres
+4989; 2606 27812 CONSTRAINT esocial classificacao_tributaria classificacao_tributaria_pk postgres
+4991; 2606 27814 CONSTRAINT esocial config_data_inicio config_data_inicio_pkey postgres
+4993; 2606 27816 CONSTRAINT esocial extensao_em_processo_cp extensao_em_processo_cp_pk postgres
+4997; 2606 27818 CONSTRAINT esocial incidencia_tributaria_da_rubrica_cprp incidencia_tributaria_da_rubrica_cprp_pk postgres
+4999; 2606 27820 CONSTRAINT esocial incidencia_tributaria_da_rubrica_fgts incidencia_tributaria_da_rubrica_fgts_pk postgres
+5001; 2606 27822 CONSTRAINT esocial incidencia_tributaria_da_rubrica_irrf incidencia_tributaria_da_rubrica_irrf_pk postgres
+5003; 2606 27824 CONSTRAINT esocial incidencia_tributaria_da_rubrica_prev incidencia_tributaria_da_rubrica_prev_pk postgres
+5005; 2606 27826 CONSTRAINT esocial indicativo_periodo_apuracao indicativo_periodo_apuracao_pk postgres
+5007; 2606 27828 CONSTRAINT esocial lotao_tributaria lotao_tributaria_pkey postgres
+5009; 2606 27830 CONSTRAINT esocial lote lote_pkey postgres
+5011; 2606 27832 CONSTRAINT esocial lotes_itens lotes_itens_pkey postgres
+5013; 2606 27834 CONSTRAINT esocial motivo_desligamento motivo_desligamento_pk postgres
+5017; 2606 27836 CONSTRAINT esocial ocorrencia ocorrencia_pkey postgres
+5019; 2606 27838 CONSTRAINT esocial ocorrencia_rel_lote ocorrencia_rel_lote_pkey postgres
+4995; 2606 27840 CONSTRAINT esocial grau_instrucao pk_raca postgres
+4981; 2606 27842 CONSTRAINT esocial afastamento_temporario_tipo pk_tipo_licenca postgres
+5025; 2606 27844 CONSTRAINT esocial s_1010_rubrica s_1010_rubrica_pkey postgres
+5015; 2606 27846 CONSTRAINT esocial natureza_de_rubrica tabela_natureza_de_rubrica_pk postgres
+5027; 2606 27848 CONSTRAINT esocial tipo_condicao_ingresso_imigrante tipo_condicao_ingresso_imigrante_pkey postgres
+5029; 2606 27850 CONSTRAINT esocial tipo_de_provimento_do_cargo tipo_de_provimento_do_cargo_pk postgres
+5031; 2606 27852 CONSTRAINT esocial tipo_de_rubrica tipo_de_rubrica_pk postgres
+5021; 2606 27854 CONSTRAINT esocial tipo_operacao tipo_operacao_pkey postgres
+5023; 2606 27856 CONSTRAINT esocial tipo_situacao_ocorrencia tipo_situacao_ocorrencia_pkey postgres
+5033; 2606 27858 CONSTRAINT esocial tipo_tempo_residencia_imigrante tipo_tempo_residencia_imigrante_pkey postgres
+5035; 2606 27860 CONSTRAINT esocial tipos_de_dependente tipos_de_dependente_pk postgres
+5037; 2606 27862 CONSTRAINT esocial trabalhador_cadastro_inicial trabalhador_cadastro_inicial_pkey postgres
+4985; 2606 27864 CONSTRAINT esocial campos_para_validacao uni_key_campo_interno_evento_esocial postgres
+5039; 2606 27866 CONSTRAINT estagiario agente_integrador agente_integrador_pkey postgres
+5041; 2606 27868 CONSTRAINT estagiario instituicao_ensino instituicao_ensino_pkey postgres
+5053; 2606 27870 CONSTRAINT folha folha_tipo_arquivo folha_tipo_arquivo_unica_sigla postgres
+5065; 2606 27872 CONSTRAINT folha folha_tipo_relatorio folha_tipo_relatorios_unica_sigla postgres
+5069; 2606 27874 CONSTRAINT folha iper_folhas folhas_codigos_iper_pkey postgres
+5097; 2606 27876 CONSTRAINT folha lancamento_periodos_nao_processar lancamento_periodos_nao_processar_pkey postgres
+5043; 2606 27878 CONSTRAINT folha folha pk_abertura_folha postgres
+5075; 2606 27880 CONSTRAINT folha historico_financeiro pk_ficha_financeira postgres
+4945; 2606 27882 CONSTRAINT folha folha_tipo pk_folha postgres
+5057; 2606 27884 CONSTRAINT folha folha_tipo_rel_folha_tipo_arquivo pk_folha_por_tipo_arquivo postgres
+5061; 2606 27886 CONSTRAINT folha folha_tipo_rel_folha_tipo_relatorio pk_folha_por_tipo_relatorio postgres
+5045; 2606 27888 CONSTRAINT folha folha_rel_vinculo_funcional pk_folha_rel_vinculo_funcional postgres
+5055; 2606 27890 CONSTRAINT folha folha_tipo_arquivo pk_folha_tipo_arquivo postgres
+5067; 2606 27892 CONSTRAINT folha folha_tipo_relatorio pk_folha_tipo_relatorio postgres
+5073; 2606 27894 CONSTRAINT folha grupo_rubrica pk_grupo_rubrica postgres
+5077; 2606 27902 CONSTRAINT folha historico_financeiro_resumo pk_historico_financeiro_resumo postgres
+5091; 2606 27904 CONSTRAINT folha lancamento pk_lancamento postgres
+5093; 2606 27906 CONSTRAINT folha lancamento_automatico_excluido pk_lancamento_automatico_excluido postgres
+5095; 2606 27908 CONSTRAINT folha lancamento_processado pk_lancamento_processado postgres
+5099; 2606 27910 CONSTRAINT folha lancamento_processado_resumo pk_lancamento_processado_resumo postgres
+4947; 2606 27912 CONSTRAINT folha rubrica pk_rubrica postgres
+5105; 2606 27914 CONSTRAINT folha rubrica_rel_folha_tipo pk_rubrica_folha postgres
+5101; 2606 27916 CONSTRAINT folha rubrica_incidencia pk_rubrica_incidencia postgres
+5109; 2606 27918 CONSTRAINT folha rubrica_rel_grupo pk_rubrica_rel_grupo postgres
+5113; 2606 27920 CONSTRAINT folha salario_piso_teto pk_salario_piso_teto postgres
+5047; 2606 27922 CONSTRAINT folha folha_status pk_status_abertura_folha postgres
+5119; 2606 27924 CONSTRAINT folha tabela_previdencia pk_tabela_inss postgres
+5115; 2606 27926 CONSTRAINT folha tabela_irpf pk_tabela_irpf postgres
+5117; 2606 27928 CONSTRAINT folha tabela_irpf_aliquota pk_tabela_irpf_aliquota postgres
+5121; 2606 27930 CONSTRAINT folha tabela_previdencia_aliquota pk_tabela_previdencia_aliquota postgres
+5071; 2606 27932 CONSTRAINT folha fonte_recurso pk_unidade_orcamentario postgres
+5125; 2606 27934 CONSTRAINT folha variavel pk_variavel postgres
+5059; 2606 27936 CONSTRAINT folha folha_tipo_rel_folha_tipo_arquivo un_folha_por_tipo_arquivo postgres
+5063; 2606 27938 CONSTRAINT folha folha_tipo_rel_folha_tipo_relatorio un_folha_por_tipo_relatorio postgres
+5107; 2606 27940 CONSTRAINT folha rubrica_rel_folha_tipo un_rubrica_folha postgres
+5103; 2606 27942 CONSTRAINT folha rubrica_incidencia un_rubrica_incidencia postgres
+5111; 2606 27944 CONSTRAINT folha rubrica_rel_grupo unica_rubrica_no_grupo postgres
+4949; 2606 27946 CONSTRAINT folha rubrica unico_codigo postgres
+5127; 2606 27948 CONSTRAINT log auditoria auditoria_pkey postgres
+5129; 2606 27950 CONSTRAINT log log_aplicacao log_aplicacao_pkey postgres
+5131; 2606 27952 CONSTRAINT log logs pk_logs postgres
+5133; 2606 27954 CONSTRAINT ponto_eletronico banco_hora pk_banco_hora postgres
+5141; 2606 27956 CONSTRAINT ponto_eletronico banco_hora_tipo pk_banco_hora_tipo postgres
+5135; 2606 27958 CONSTRAINT ponto_eletronico banco_hora_saldo pk_banco_horas_saldo postgres
+5171; 2606 27960 CONSTRAINT ponto_eletronico vinculo_rel_regime_trabalho pk_cargo_vinculo_regime_trabalho postgres
+5177; 2606 27962 CONSTRAINT ponto_eletronico vinculo_resumo_mensal pk_cargo_vinculo_resumo_mensal postgres
+5147; 2606 27964 CONSTRAINT ponto_eletronico dia_semana pk_dia_semana postgres
+5169; 2606 27966 CONSTRAINT ponto_eletronico relogio_de_ponto pk_equipamento_ponto_eletronico postgres
+5149; 2606 27968 CONSTRAINT ponto_eletronico jornada_trabalho pk_jornada_trabalho postgres
+5151; 2606 27970 CONSTRAINT ponto_eletronico jornada_trabalho_rel_dia_semana pk_jornada_trabalho_dia_semana postgres
+5137; 2606 27972 CONSTRAINT ponto_eletronico justificativa_registro_ponto pk_justificativa_registro_ponto postgres
+5143; 2606 27974 CONSTRAINT ponto_eletronico justificativa_tipo pk_justificativa_tipo postgres
+5155; 2606 27976 CONSTRAINT ponto_eletronico justificativa_registro_ponto_item pk_justificativas_registro_ponto_item postgres
+5157; 2606 27978 CONSTRAINT ponto_eletronico regime_rel_jornada_trabalho pk_regime_jornada_trabalho postgres
+5161; 2606 27980 CONSTRAINT ponto_eletronico regime_trabalho pk_regime_trabalho postgres
+5165; 2606 27982 CONSTRAINT ponto_eletronico registro_ponto pk_registro_ponto postgres
+5175; 2606 27984 CONSTRAINT ponto_eletronico setor_resumo_mensal setor_resumo_mensal_pkey postgres
+5153; 2606 27986 CONSTRAINT ponto_eletronico jornada_trabalho_rel_dia_semana un_jornada_trabalho_dia_semana postgres
+5139; 2606 27988 CONSTRAINT ponto_eletronico justificativa_registro_ponto un_justificativa_registro postgres
+5145; 2606 27990 CONSTRAINT ponto_eletronico justificativa_tipo un_justificativa_tipo_descricao postgres
+5159; 2606 27992 CONSTRAINT ponto_eletronico regime_rel_jornada_trabalho un_regime_jornada_trabalho postgres
+5167; 2606 27994 CONSTRAINT ponto_eletronico registro_ponto unique_ponto_por_rep postgres
+5123; 2606 27996 CONSTRAINT previdencia regime_previdenciario pk_regime_previdenciario postgres
+4951; 2606 27998 CONSTRAINT previdencia regime_previdenciario_fundo pk_regime_previdenciario_fundo postgres
+5179; 2606 28000 CONSTRAINT previdencia vigencia_patronal pk_vigencia_patronal postgres
+5233; 2606 28002 CONSTRAINT public tipo_empresa_resposavel check_parametro_tipo_empresa_resposavel postgres
+5219; 2606 28004 CONSTRAINT public empresa_rel_modulo empresa_rel_modulo_pkey postgres
+5231; 2606 28006 CONSTRAINT public empresa_responsavel_tipo empresa_responsavel_tipo_pkey postgres
+5369; 2606 33218 CONSTRAINT public jasper jasper_pkey postgres
+5221; 2606 28008 CONSTRAINT public modulo modulo_pkey postgres
+5181; 2606 28010 CONSTRAINT public agencia pk_agencia postgres
+5185; 2606 28012 CONSTRAINT public anexo pk_anexo postgres
+5187; 2606 28014 CONSTRAINT public arquivo pk_arquivo postgres
+5163; 2606 28016 CONSTRAINT public arquivo_propriedade pk_arquivo_propriedade postgres
+5183; 2606 28018 CONSTRAINT public banco pk_banco postgres
+5193; 2606 28020 CONSTRAINT public conta_bancaria pk_conta_bancaria postgres
+5199; 2606 28022 CONSTRAINT public deficiencia_tipo pk_deficiencia_tipo postgres
+5201; 2606 28024 CONSTRAINT public documento_cnh pk_documento_cnh postgres
+5203; 2606 28026 CONSTRAINT public documento_ctps pk_documento_ctps postgres
+5205; 2606 28028 CONSTRAINT public documento_identidade_profissional pk_documento_identidade_profissional postgres
+5207; 2606 28030 CONSTRAINT public documento_reservista pk_documento_reservista postgres
+5209; 2606 28032 CONSTRAINT public documento_rg pk_documento_rg postgres
+5213; 2606 28034 CONSTRAINT public documento_titulo_eleitor pk_documento_titulo_eleitor postgres
+5215; 2606 28036 CONSTRAINT public empresa pk_empresa postgres
+5217; 2606 28038 CONSTRAINT public empresa_old pk_empresa_old postgres
+5223; 2606 28040 CONSTRAINT public empresa_responsavel pk_empresa_responsavel postgres
+5225; 2606 28042 CONSTRAINT public empresa_responsavel_old pk_empresa_responsavel_old postgres
+5227; 2606 28044 CONSTRAINT public empresa_responsavel_relatorio pk_empresa_responsavel_relatorio postgres
+5237; 2606 28046 CONSTRAINT public estado_civil pk_estado_civil postgres
+5189; 2606 28048 CONSTRAINT public feriado pk_feriado postgres
+4939; 2606 28050 CONSTRAINT public nivel_formacao pk_nivel_formacao postgres
+5239; 2606 28052 CONSTRAINT public parametro pk_paramentro postgres
+5079; 2606 28054 CONSTRAINT public pessoa pk_pessoa postgres
+5243; 2606 28056 CONSTRAINT public pessoa_contato pk_pessoa_contato postgres
+5245; 2606 28058 CONSTRAINT public pessoa_documento pk_pessoa_documento postgres
+5247; 2606 28060 CONSTRAINT public pessoa_rel_deficiencia pk_pessoa_rel_deficiencia postgres
+5249; 2606 28062 CONSTRAINT public pessoa_rel_endereco pk_pessoa_rel_endereco postgres
+5255; 2606 28064 CONSTRAINT public plano_saude pk_plano_saude postgres
+5251; 2606 28066 CONSTRAINT public raca pk_raca postgres
+5253; 2606 28068 CONSTRAINT public sexo pk_sexo postgres
+5197; 2606 28070 CONSTRAINT public contato_tipo pk_tipo_contato postgres
+5211; 2606 28072 CONSTRAINT public documento_tipo pk_tipo_documento postgres
+5235; 2606 28074 CONSTRAINT public tipo_empresa_resposavel pk_tipo_empresa_resposavel postgres
+5257; 2606 28076 CONSTRAINT public tipo_sanguineo pk_tipo_sanguineo postgres
+5195; 2606 28078 CONSTRAINT public conta_bancaria_tipo pk_tipos_contas_bancarias postgres
+5259; 2606 28080 CONSTRAINT public versao pk_versao postgres
+5261; 2606 28082 CONSTRAINT public versao_scripts_bd pk_versao_scripts_bd postgres
+5081; 2606 28084 CONSTRAINT public pessoa un_cpf postgres
+5229; 2606 28086 CONSTRAINT public empresa_responsavel_relatorio un_empresa_responsavel_relatorio postgres
+5191; 2606 28088 CONSTRAINT public feriado un_feriado postgres
+5241; 2606 28090 CONSTRAINT public parametro un_paramentro postgres
+5083; 2606 28092 CONSTRAINT public pessoa un_pessoa postgres
+5263; 2606 28094 CONSTRAINT rescisao rescisao pk_rescisao postgres
+5273; 2606 28096 CONSTRAINT seguranca grupo_permissao pk_grupo_permissao postgres
+5275; 2606 28098 CONSTRAINT seguranca perfil pk_perfil postgres
+5265; 2606 28100 CONSTRAINT seguranca perfil_rel_usuario pk_perfil_rel_usuario postgres
+5267; 2606 28102 CONSTRAINT seguranca permissao pk_permissao postgres
+5269; 2606 28104 CONSTRAINT seguranca permissao_rel_perfil pk_permissao_rel_perfil postgres
+5277; 2606 28106 CONSTRAINT seguranca recuperar_senha pk_recuperar_senha postgres
+5049; 2606 28108 CONSTRAINT seguranca usuario pk_usuario postgres
+5271; 2606 28110 CONSTRAINT seguranca permissao_rel_perfil un_permissao_rel_perfil postgres
+5051; 2606 28112 CONSTRAINT seguranca usuario unico_login postgres
+5279; 2606 28114 CONSTRAINT setor nivel_hierarquico pk_nivel_hierarquico postgres
+4979; 2606 28116 CONSTRAINT setor setor pk_setor postgres
+5281; 2606 28118 CONSTRAINT setor setor_contato pk_setor_contato postgres
+5283; 2606 28120 CONSTRAINT setor setor_rel_unidade pk_setor_rel_unidade postgres
+5287; 2606 28122 CONSTRAINT setor setor_tipo pk_tipo_setor postgres
+5285; 2606 28124 CONSTRAINT setor unidade pk_unidade postgres
+5305; 2606 28126 CONSTRAINT vinculo averbacoes_efeito averbacoes_efeitos_pkey postgres
+5307; 2606 28128 CONSTRAINT vinculo averbacoes_origem averbacoes_origens_pkey postgres
+5337; 2606 28130 CONSTRAINT vinculo gratificacoes_tipo gratificacoes_tipo_pkey postgres
+5339; 2606 28132 CONSTRAINT vinculo incorporacoes_tipo incorporacoes_tipo_pkey postgres
+5351; 2606 28134 CONSTRAINT vinculo pensao_rel_pensionista pensao_rel_pensionista_pkey postgres
+5293; 2606 28136 CONSTRAINT vinculo afastamento_configuracao pk_afastamento_configuracao postgres
+5297; 2606 28138 CONSTRAINT vinculo anexo pk_anexo postgres
+5299; 2606 28140 CONSTRAINT vinculo anotacao pk_anotacao postgres
+5301; 2606 28142 CONSTRAINT vinculo anotacao_tipo pk_anotacao_tipo postgres
+5303; 2606 28144 CONSTRAINT vinculo auxilio_saude pk_auxilio_saude postgres
+5313; 2606 28146 CONSTRAINT vinculo cedencia pk_cedidos postgres
+5315; 2606 28148 CONSTRAINT vinculo credito_para_terceiro pk_credito_para_terceiro postgres
+5317; 2606 28150 CONSTRAINT vinculo credito_para_terceiro_anexo pk_credito_para_terceiro_anexo postgres
+5319; 2606 28152 CONSTRAINT vinculo credito_para_terceiro_incidencia pk_credito_para_terceiro_incidencia postgres
+5321; 2606 28154 CONSTRAINT vinculo credito_para_terceiro_rel_folha_tipo pk_credito_para_terceiro_rel_folha_tipo postgres
+5325; 2606 28156 CONSTRAINT vinculo dependente pk_dependentes postgres
+5327; 2606 28158 CONSTRAINT vinculo estagio pk_estagio postgres
+5329; 2606 28160 CONSTRAINT vinculo estagio_natureza pk_estagio_natureza postgres
+5331; 2606 28162 CONSTRAINT vinculo estagio_tipo pk_estagio_tipo postgres
+5311; 2606 28164 CONSTRAINT vinculo ferias_gozo pk_feria_gozo postgres
+5309; 2606 28166 CONSTRAINT vinculo ferias pk_ferias postgres
+5333; 2606 28168 CONSTRAINT vinculo ferias_configuracao_desconto pk_ferias_configuracao_desconto postgres
+5335; 2606 28170 CONSTRAINT vinculo ferias_tipo_calculo pk_ferias_tipos_calculos postgres
+5341; 2606 28172 CONSTRAINT vinculo informacao_curricular pk_informacao_curricular postgres
+5343; 2606 28174 CONSTRAINT vinculo informacao_curricular_area pk_informacao_curricular_area postgres
+5345; 2606 28176 CONSTRAINT vinculo informacao_curricular_nivel_curso pk_informacao_curricular_nivel_curso postgres
+5291; 2606 28178 CONSTRAINT vinculo afastamento pk_licenca postgres
+5173; 2606 28180 CONSTRAINT vinculo lotacao pk_lotacao postgres
+5347; 2606 28182 CONSTRAINT vinculo pensao pk_pensao postgres
+5349; 2606 28184 CONSTRAINT vinculo pensao_rel_folha_tipo pk_pensao_rel_folha_tipo_rel_rubrica postgres
+5355; 2606 28186 CONSTRAINT vinculo pensao_tipo pk_pensao_tipo postgres
+5357; 2606 28188 CONSTRAINT vinculo pensao_tipo_rel_incidencia pk_pensao_tipo_rel_incidencia postgres
+5353; 2606 28190 CONSTRAINT vinculo pensao_representante_tipo pk_representacao_legal_tipo postgres
+5359; 2606 28192 CONSTRAINT vinculo substituicao pk_substituicao postgres
+5361; 2606 28194 CONSTRAINT vinculo tipo_admissao pk_tipo_admissao postgres
+5323; 2606 28196 CONSTRAINT vinculo tipo_decimo_terceiro pk_tipo_decimo_terceiro postgres
+5295; 2606 28198 CONSTRAINT vinculo afastamento_tipo pk_tipo_licenca postgres
+5085; 2606 28200 CONSTRAINT vinculo vinculo_cargo pk_vinculo_cargo postgres
+5087; 2606 28202 CONSTRAINT vinculo vinculo_funcional pk_vinculo_funcional postgres
+5289; 2606 28204 CONSTRAINT vinculo adicional_tipo rubrica_adicional_pkey postgres
+5089; 2606 28206 CONSTRAINT vinculo vinculo_funcional un_matricula postgres
+5365; 2606 28208 CONSTRAINT vinculo vinculo_funcional_gratificacoes vinculo_funcional_gratificacoes_pkey postgres
+5367; 2606 28210 CONSTRAINT vinculo vinculo_funcional_incorporacoes vinculo_funcional_incorporacoes_pkey postgres
+5363; 2606 28212 CONSTRAINT vinculo vinculo_funcional_adicional vinculo_funcional_rubrica_adicional_pkey postgres
+5893; 2618 25524 RULE ponto_eletronico jornada_trabalho_view _RETURN postgres
+5894; 2618 25538 RULE ponto_eletronico justificativa_registro_ponto_view _RETURN postgres
+5895; 2618 25547 RULE ponto_eletronico regime_rel_jornada_trabalho_view _RETURN postgres
+5648; 2620 28216 TRIGGER categoria_funcional agregacao log postgres
+5650; 2620 28217 TRIGGER categoria_funcional cargo log postgres
+5649; 2620 28218 TRIGGER categoria_funcional categoria log postgres
+5652; 2620 28219 TRIGGER categoria_funcional categoria_rubrica_padrao log postgres
+5651; 2620 28220 TRIGGER categoria_funcional vinculo_tipo log postgres
+5654; 2620 28221 TRIGGER escala escala log postgres
+5655; 2620 28222 TRIGGER escala escala_item log postgres
+5666; 2620 28223 TRIGGER folha rubrica_incidencia gt_ajusta_ordem_nas_rubricas postgres
+5667; 2620 28224 TRIGGER folha rubrica_incidencia gt_check_deadlock_em_incidencia_de_rubricas postgres
+5656; 2620 28225 TRIGGER folha folha log postgres
+5658; 2620 28226 TRIGGER folha folha_rel_vinculo_funcional log postgres
+5653; 2620 28227 TRIGGER folha rubrica log postgres
+5668; 2620 28228 TRIGGER folha rubrica_rel_grupo log postgres
+5660; 2620 28229 TRIGGER folha folha_status tg_valida_novo_status_folha postgres
+5669; 2620 28230 TRIGGER folha tabela_irpf tg_validar_cadastro_tabela_irpf postgres
+5670; 2620 28231 TRIGGER folha tabela_previdencia tg_validar_cadastro_tabela_previdencia postgres
+5657; 2620 28232 TRIGGER folha folha tg_validar_exclusao_folha postgres
+5659; 2620 28233 TRIGGER folha folha_rel_vinculo_funcional tg_validar_inclusao_exclusao_vinculo_funcional_na_folha postgres
+5665; 2620 28234 TRIGGER folha lancamento tg_validar_qtde_eventos_lancados_por_folha postgres
+5671; 2620 28235 TRIGGER ponto_eletronico justificativa_registro_ponto tg_atualiza_saldo_banco_hora postgres
+5672; 2620 28236 TRIGGER ponto_eletronico justificativa_registro_ponto tg_justificativa_periodo_fechado postgres
+5675; 2620 28237 TRIGGER ponto_eletronico vinculo_rel_regime_trabalho tg_retira_vinculo_regime_trabalho postgres
+5673; 2620 28238 TRIGGER ponto_eletronico jornada_trabalho tg_sobreposicao_jornada_trabalho postgres
+5676; 2620 28239 TRIGGER ponto_eletronico vinculo_rel_regime_trabalho tg_sobreposicao_regime_trabalho postgres
+5689; 2620 28240 TRIGGER public pessoa_rel_endereco check_unico_endereco_principal_por_pessoa postgres
+5680; 2620 28241 TRIGGER public anexo log postgres
+5681; 2620 28242 TRIGGER public conta_bancaria log postgres
+5682; 2620 28243 TRIGGER public empresa log postgres
+5683; 2620 28244 TRIGGER public empresa_old log postgres
+5684; 2620 28245 TRIGGER public empresa_responsavel_old log postgres
+5685; 2620 28246 TRIGGER public parametro log postgres
+5662; 2620 28247 TRIGGER public pessoa log postgres
+5686; 2620 28248 TRIGGER public pessoa_contato log postgres
+5687; 2620 28249 TRIGGER public pessoa_documento log postgres
+5688; 2620 28250 TRIGGER public pessoa_rel_deficiencia log postgres
+5690; 2620 28251 TRIGGER public pessoa_rel_endereco log postgres
+5691; 2620 28252 TRIGGER public versao tg_ajusta_versao postgres
+5674; 2620 28253 TRIGGER public arquivo_propriedade tg_excluir_arquivo postgres
+5663; 2620 28254 TRIGGER public pessoa tg_set_nome_sem_acento postgres
+5692; 2620 28255 TRIGGER seguranca perfil_rel_usuario log postgres
+5693; 2620 28256 TRIGGER seguranca permissao_rel_perfil log postgres
+5661; 2620 28257 TRIGGER seguranca usuario log postgres
+5694; 2620 28258 TRIGGER vinculo afastamento log postgres
+5696; 2620 28259 TRIGGER vinculo afastamento_configuracao log postgres
+5697; 2620 28260 TRIGGER vinculo anexo log postgres
+5698; 2620 28261 TRIGGER vinculo anotacao log postgres
+5699; 2620 28262 TRIGGER vinculo auxilio_saude log postgres
+5705; 2620 28263 TRIGGER vinculo cedencia log postgres
+5707; 2620 28264 TRIGGER vinculo credito_para_terceiro log postgres
+5709; 2620 28265 TRIGGER vinculo credito_para_terceiro_anexo log postgres
+5710; 2620 28266 TRIGGER vinculo credito_para_terceiro_incidencia log postgres
+5711; 2620 28267 TRIGGER vinculo dependente log postgres
+5700; 2620 28268 TRIGGER vinculo ferias log postgres
+5702; 2620 28269 TRIGGER vinculo ferias_gozo log postgres
+5714; 2620 28270 TRIGGER vinculo informacao_curricular log postgres
+5677; 2620 28271 TRIGGER vinculo lotacao log postgres
+5715; 2620 28272 TRIGGER vinculo pensao log postgres
+5717; 2620 28273 TRIGGER vinculo pensao_tipo_rel_incidencia log postgres
+5718; 2620 28274 TRIGGER vinculo substituicao log postgres
+5664; 2620 28275 TRIGGER vinculo vinculo_funcional log postgres
+5720; 2620 28276 TRIGGER vinculo vinculo_funcional_adicional log postgres
+5721; 2620 28277 TRIGGER vinculo vinculo_funcional_gratificacoes log postgres
+5722; 2620 28278 TRIGGER vinculo vinculo_funcional_incorporacoes log postgres
+5678; 2620 28279 TRIGGER vinculo lotacao tg_exclui_lotacao postgres
+5679; 2620 28280 TRIGGER vinculo lotacao tg_valida_lotacao postgres
+5695; 2620 28281 TRIGGER vinculo afastamento tg_validar_cadastro_afastamento postgres
+5706; 2620 28282 TRIGGER vinculo cedencia tg_validar_cadastro_cedencia postgres
+5708; 2620 28283 TRIGGER vinculo credito_para_terceiro tg_validar_cadastro_credito_para_terceiro postgres
+5712; 2620 28284 TRIGGER vinculo dependente tg_validar_cadastro_dependente postgres
+5713; 2620 28285 TRIGGER vinculo estagio tg_validar_cadastro_estagio postgres
+5701; 2620 28286 TRIGGER vinculo ferias tg_validar_cadastro_ferias postgres
+5703; 2620 28287 TRIGGER vinculo ferias_gozo tg_validar_cadastro_ferias_gozo postgres
+5716; 2620 28288 TRIGGER vinculo pensao tg_validar_cadastro_pensao postgres
+5719; 2620 28289 TRIGGER vinculo substituicao tg_validar_cadastro_substituicao postgres
+5704; 2620 28290 TRIGGER vinculo ferias_gozo tg_validar_sobreposicao_ferias_gozo postgres
+5375; 2606 28291 FK CONSTRAINT categoria_funcional cargo fk_area_atuacao postgres
+5378; 2606 28296 FK CONSTRAINT categoria_funcional cargo_rel_cargo_nivel fk_cargo postgres
+5382; 2606 28301 FK CONSTRAINT categoria_funcional categoria_rubrica_padrao fk_categoria postgres
+5372; 2606 28306 FK CONSTRAINT categoria_funcional categoria fk_ferias_tipo_calculo postgres
+5383; 2606 28311 FK CONSTRAINT categoria_funcional categoria_rubrica_padrao fk_folha_tipo postgres
+5379; 2606 28316 FK CONSTRAINT categoria_funcional cargo_rel_cargo_nivel fk_nivel_anterior postgres
+5380; 2606 28321 FK CONSTRAINT categoria_funcional cargo_rel_cargo_nivel fk_nivel_cargo postgres
+5376; 2606 28326 FK CONSTRAINT categoria_funcional cargo fk_nivel_formacao postgres
+5373; 2606 28331 FK CONSTRAINT categoria_funcional categoria fk_regime_previdenciario_id postgres
+5370; 2606 28336 FK CONSTRAINT categoria_funcional agregacao fk_regulamentacao_1 postgres
+5371; 2606 28341 FK CONSTRAINT categoria_funcional agregacao fk_regulamentacao_2 postgres
+5377; 2606 28346 FK CONSTRAINT categoria_funcional cargo fk_regulamentacoes postgres
+5384; 2606 28351 FK CONSTRAINT categoria_funcional categoria_rubrica_padrao fk_rubrica postgres
+5374; 2606 28356 FK CONSTRAINT categoria_funcional categoria fk_vinculo postgres
+5403; 2606 28361 FK CONSTRAINT cep logradouro fk_bairro postgres
+5397; 2606 28366 FK CONSTRAINT cep endereco fk_bairro postgres
+5395; 2606 28371 FK CONSTRAINT cep bairro fk_cidade postgres
+5398; 2606 28376 FK CONSTRAINT cep endereco fk_cidade postgres
+5396; 2606 28381 FK CONSTRAINT cep cidade fk_estado postgres
+5399; 2606 28386 FK CONSTRAINT cep endereco fk_estado postgres
+5400; 2606 28391 FK CONSTRAINT cep endereco fk_logradouro postgres
+5402; 2606 28396 FK CONSTRAINT cep estado fk_pais postgres
+5404; 2606 28401 FK CONSTRAINT cep logradouro fk_tipo_logradouro postgres
+5401; 2606 28406 FK CONSTRAINT cep endereco fk_tipo_logradouro postgres
+5405; 2606 28411 FK CONSTRAINT escala escala fk_rubrica postgres
+5406; 2606 28416 FK CONSTRAINT escala escala fk_setor postgres
+5407; 2606 28421 FK CONSTRAINT escala escala_item fk_vinculo_funcional postgres
+5420; 2606 28426 FK CONSTRAINT esocial trabalhador_cadastro_inicial fk_cargo_id postgres
+5421; 2606 28431 FK CONSTRAINT esocial trabalhador_cadastro_inicial fk_cargo_vinculo_principal postgres
+5422; 2606 28436 FK CONSTRAINT esocial trabalhador_cadastro_inicial fk_cedencia_primeira postgres
+5423; 2606 28441 FK CONSTRAINT esocial trabalhador_cadastro_inicial fk_cedencia_ultima postgres
+5424; 2606 28446 FK CONSTRAINT esocial trabalhador_cadastro_inicial fk_estagio postgres
+5417; 2606 28451 FK CONSTRAINT esocial ocorrencia_rel_lote fk_lote postgres
+5411; 2606 28456 FK CONSTRAINT esocial lotes_itens fk_lote_id postgres
+5418; 2606 28461 FK CONSTRAINT esocial ocorrencia_rel_lote fk_ocorrencia postgres
+5425; 2606 28466 FK CONSTRAINT esocial trabalhador_cadastro_inicial fk_ocorrencia postgres
+5412; 2606 28471 FK CONSTRAINT esocial lotes_itens fk_ocorrencia_id postgres
+5413; 2606 28476 FK CONSTRAINT esocial ocorrencia fk_tipo_operacao_id postgres
+5414; 2606 28481 FK CONSTRAINT esocial ocorrencia fk_tipo_situacao_ocorrencia postgres
+5415; 2606 28486 FK CONSTRAINT esocial ocorrencia fk_tipo_situacao_ocorrencia_id postgres
+5416; 2606 28491 FK CONSTRAINT esocial ocorrencia fk_versao_anterior_id postgres
+5426; 2606 28496 FK CONSTRAINT esocial trabalhador_cadastro_inicial fk_vinculo_funcional postgres
+5419; 2606 28501 FK CONSTRAINT esocial s_1010_rubrica ocorrencia_id_pkey postgres
+5427; 2606 28506 FK CONSTRAINT estagiario instituicao_ensino fk_endereco postgres
+5484; 2606 28511 FK CONSTRAINT folha lancamento_processado_resumo fk_cargo postgres
+5442; 2606 28516 FK CONSTRAINT folha historico_financeiro_resumo fk_cargo postgres
+5485; 2606 28521 FK CONSTRAINT folha lancamento_processado_resumo fk_cargo_vinculo postgres
+5443; 2606 28526 FK CONSTRAINT folha historico_financeiro_resumo fk_cargo_vinculo postgres
+5435; 2606 28531 FK CONSTRAINT folha historico_financeiro fk_cargo_vinculo postgres
+5477; 2606 28536 FK CONSTRAINT folha lancamento_processado fk_cargo_vinculo postgres
+5436; 2606 28541 FK CONSTRAINT folha historico_financeiro fk_complemento postgres
+5478; 2606 28546 FK CONSTRAINT folha lancamento_processado fk_complemento postgres
+5437; 2606 28551 FK CONSTRAINT folha historico_financeiro fk_dependente postgres
+5479; 2606 28556 FK CONSTRAINT folha lancamento_processado fk_dependente postgres
+5438; 2606 28561 FK CONSTRAINT folha historico_financeiro fk_evento postgres
+5480; 2606 28566 FK CONSTRAINT folha lancamento_processado fk_evento postgres
+5431; 2606 28571 FK CONSTRAINT folha folha_tipo_rel_folha_tipo_arquivo fk_folha postgres
+5433; 2606 28576 FK CONSTRAINT folha folha_tipo_rel_folha_tipo_relatorio fk_folha postgres
+5428; 2606 28581 FK CONSTRAINT folha folha fk_folha postgres
+5471; 2606 28586 FK CONSTRAINT folha lancamento fk_folha_tipo postgres
+5434; 2606 28591 FK CONSTRAINT folha folha_tipo_rel_folha_tipo_relatorio fk_folha_tipo_relatorio postgres
+5386; 2606 28596 FK CONSTRAINT folha rubrica fk_fonte_recurso postgres
+5490; 2606 28601 FK CONSTRAINT folha rubrica_rel_grupo fk_grupo postgres
+5387; 2606 28606 FK CONSTRAINT folha rubrica fk_incidencia_tributaria_da_rubrica_cprp postgres
+5388; 2606 28611 FK CONSTRAINT folha rubrica fk_incidencia_tributaria_da_rubrica_fgts postgres
+5389; 2606 28616 FK CONSTRAINT folha rubrica fk_incidencia_tributaria_da_rubrica_irrf postgres
+5390; 2606 28621 FK CONSTRAINT folha rubrica fk_incidencia_tributaria_da_rubrica_prev postgres
+5481; 2606 28626 FK CONSTRAINT folha lancamento_processado fk_lancamento postgres
+5439; 2606 28631 FK CONSTRAINT folha historico_financeiro fk_lancamento postgres
+5391; 2606 28636 FK CONSTRAINT folha rubrica fk_natureza_de_rubrica postgres
+5486; 2606 28641 FK CONSTRAINT folha lancamento_processado_resumo fk_nivel postgres
+5444; 2606 28646 FK CONSTRAINT folha historico_financeiro_resumo fk_nivel postgres
+5430; 2606 28651 FK CONSTRAINT folha folha_status fk_responsavel postgres
+5491; 2606 28656 FK CONSTRAINT folha rubrica_rel_grupo fk_rubrica postgres
+5492; 2606 28661 FK CONSTRAINT folha salario_piso_teto fk_rubrica postgres
+5488; 2606 28666 FK CONSTRAINT folha rubrica_incidencia fk_rubrica postgres
+5474; 2606 28671 FK CONSTRAINT folha lancamento_automatico_excluido fk_rubrica postgres
+5472; 2606 28676 FK CONSTRAINT folha lancamento fk_rubrica postgres
+5493; 2606 28681 FK CONSTRAINT folha salario_piso_teto fk_rubrica_13 postgres
+5489; 2606 28686 FK CONSTRAINT folha rubrica_incidencia fk_rubrica_incidencia postgres
+5494; 2606 28691 FK CONSTRAINT folha tabela_irpf_aliquota fk_tabela_irpf postgres
+5496; 2606 28696 FK CONSTRAINT folha tabela_previdencia_aliquota fk_tabela_previdencia postgres
+5495; 2606 28701 FK CONSTRAINT folha tabela_previdencia fk_tabela_previdencia_patronal postgres
+5432; 2606 28706 FK CONSTRAINT folha folha_tipo_rel_folha_tipo_arquivo fk_tipo_arquivo postgres
+5392; 2606 28711 FK CONSTRAINT folha rubrica fk_tp_rubr postgres
+5440; 2606 28716 FK CONSTRAINT folha historico_financeiro fk_unidade_orcamentaria postgres
+5482; 2606 28721 FK CONSTRAINT folha lancamento_processado fk_unidade_orcamentaria postgres
+5475; 2606 28726 FK CONSTRAINT folha lancamento_automatico_excluido fk_usuario postgres
+5476; 2606 28731 FK CONSTRAINT folha lancamento_automatico_excluido fk_vinculo_cargo postgres
+5473; 2606 28736 FK CONSTRAINT folha lancamento fk_vinculo_cargo postgres
+5441; 2606 28741 FK CONSTRAINT folha historico_financeiro fk_vinculo_funcional postgres
+5429; 2606 28746 FK CONSTRAINT folha folha_rel_vinculo_funcional fk_vinculo_funcional postgres
+5483; 2606 28751 FK CONSTRAINT folha lancamento_processado fk_vinculo_funcional postgres
+5487; 2606 28756 FK CONSTRAINT folha lancamento_processado_resumo fk_vinculo_pessoa postgres
+5385; 2606 28761 FK CONSTRAINT folha folha_tipo folhas_iper_folha_id_fkey postgres
+5512; 2606 28766 FK CONSTRAINT ponto_eletronico regime_trabalho fk_arquivo_propriedade postgres
+5501; 2606 28771 FK CONSTRAINT ponto_eletronico justificativa_registro_ponto fk_arquivo_propriedade postgres
+5499; 2606 28776 FK CONSTRAINT ponto_eletronico banco_hora fk_banco_hora_tipo postgres
+5521; 2606 28781 FK CONSTRAINT ponto_eletronico setor_resumo_mensal fk_chefe_id postgres
+5506; 2606 28786 FK CONSTRAINT ponto_eletronico jornada_trabalho_rel_dia_semana fk_dia_semana postgres
+5513; 2606 28791 FK CONSTRAINT ponto_eletronico registro_ponto fk_equipamento_ponto_eletronico postgres
+5508; 2606 28796 FK CONSTRAINT ponto_eletronico justificativa_registro_ponto_item fk_jornada postgres
+5507; 2606 28801 FK CONSTRAINT ponto_eletronico jornada_trabalho_rel_dia_semana fk_jornada_trabalho postgres
+5510; 2606 28806 FK CONSTRAINT ponto_eletronico regime_rel_jornada_trabalho fk_jornada_trabalho postgres
+5509; 2606 28811 FK CONSTRAINT ponto_eletronico justificativa_registro_ponto_item fk_justificativa postgres
+5514; 2606 28816 FK CONSTRAINT ponto_eletronico registro_ponto fk_justificativa_registro_ponto postgres
+5502; 2606 28821 FK CONSTRAINT ponto_eletronico justificativa_registro_ponto fk_justificativas_registro_ponto_banco_hora postgres
+5511; 2606 28826 FK CONSTRAINT ponto_eletronico regime_rel_jornada_trabalho fk_regime_trabalho postgres
+5516; 2606 28831 FK CONSTRAINT ponto_eletronico vinculo_rel_regime_trabalho fk_regime_trabalho postgres
+5522; 2606 28836 FK CONSTRAINT ponto_eletronico setor_resumo_mensal fk_setor postgres
+5503; 2606 28841 FK CONSTRAINT ponto_eletronico justificativa_registro_ponto fk_tipo postgres
+5524; 2606 28846 FK CONSTRAINT ponto_eletronico vinculo_resumo_mensal fk_usuario_fechamento postgres
+5504; 2606 28851 FK CONSTRAINT ponto_eletronico justificativa_registro_ponto fk_vinculo_analise postgres
+5517; 2606 28856 FK CONSTRAINT ponto_eletronico vinculo_rel_regime_trabalho fk_vinculo_funcional postgres
+5500; 2606 28861 FK CONSTRAINT ponto_eletronico banco_hora_saldo fk_vinculo_funcional postgres
+5515; 2606 28866 FK CONSTRAINT ponto_eletronico registro_ponto fk_vinculo_funcional postgres
+5525; 2606 28871 FK CONSTRAINT ponto_eletronico vinculo_resumo_mensal fk_vinculo_funcional postgres
+5505; 2606 28876 FK CONSTRAINT ponto_eletronico justificativa_registro_ponto fk_vinculo_solicitante postgres
+5523; 2606 28881 FK CONSTRAINT ponto_eletronico setor_resumo_mensal setor_resumo_mensal_usuario_fechou_fkey postgres
+5526; 2606 28886 FK CONSTRAINT ponto_eletronico vinculo_resumo_mensal vinculo_resumo_mensal_setor_id_fkey postgres
+5393; 2606 28891 FK CONSTRAINT previdencia regime_previdenciario_fundo fk_regime_previdenciario postgres
+5497; 2606 28896 FK CONSTRAINT previdencia regime_previdenciario fk_rubrica postgres
+5498; 2606 28901 FK CONSTRAINT previdencia regime_previdenciario fk_rubrica_13 postgres
+5527; 2606 28906 FK CONSTRAINT previdencia vigencia_patronal fk_vigencia_patronal postgres
+5394; 2606 28911 FK CONSTRAINT previdencia regime_previdenciario_fundo fk_vigencia_patronal_regime_fundo postgres
+5531; 2606 28916 FK CONSTRAINT public conta_bancaria fk_agencia postgres
+5557; 2606 28921 FK CONSTRAINT public pessoa_documento fk_arquivo_propriedade postgres
+5529; 2606 28926 FK CONSTRAINT public anexo fk_arquivo_propriedade postgres
+5528; 2606 28931 FK CONSTRAINT public agencia fk_banco postgres
+5532; 2606 28936 FK CONSTRAINT public conta_bancaria fk_banco postgres
+5560; 2606 28941 FK CONSTRAINT public pessoa_rel_deficiencia fk_deficiencia_tipo postgres
+5558; 2606 28946 FK CONSTRAINT public pessoa_documento fk_documento_tipo postgres
+5547; 2606 28951 FK CONSTRAINT public empresa_responsavel fk_empresa postgres
+5545; 2606 28956 FK CONSTRAINT public empresa_rel_modulo fk_empresa postgres
+5540; 2606 28961 FK CONSTRAINT public empresa fk_empresa_arquivo_propriedade postgres
+5541; 2606 28966 FK CONSTRAINT public empresa fk_empresa_endereco postgres
+5542; 2606 28971 FK CONSTRAINT public empresa_old fk_empresa_endereco_old postgres
+5550; 2606 28976 FK CONSTRAINT public empresa_responsavel_old fk_empresa_old postgres
+5553; 2606 28981 FK CONSTRAINT public empresa_responsavel_relatorio fk_empresa_responsavel postgres
+5445; 2606 28986 FK CONSTRAINT public pessoa fk_estado_civil postgres
+5554; 2606 28991 FK CONSTRAINT public empresa_responsavel_relatorio fk_folha_tipo_relatorio postgres
+5446; 2606 28996 FK CONSTRAINT public pessoa fk_foto postgres
+5381; 2606 29001 FK CONSTRAINT public nivel_formacao fk_grau_instrucao postgres
+5546; 2606 29006 FK CONSTRAINT public empresa_rel_modulo fk_modulo postgres
+5447; 2606 29011 FK CONSTRAINT public pessoa fk_nacionalidaded postgres
+5448; 2606 29016 FK CONSTRAINT public pessoa fk_naturalidade postgres
+5449; 2606 29021 FK CONSTRAINT public pessoa fk_nivel_formacao postgres
+5450; 2606 29026 FK CONSTRAINT public pessoa fk_pais_nascimento postgres
+5562; 2606 29031 FK CONSTRAINT public pessoa_rel_endereco fk_pessoa postgres
+5555; 2606 29036 FK CONSTRAINT public pessoa_contato fk_pessoa postgres
+5559; 2606 29041 FK CONSTRAINT public pessoa_documento fk_pessoa postgres
+5561; 2606 29046 FK CONSTRAINT public pessoa_rel_deficiencia fk_pessoa postgres
+5534; 2606 29051 FK CONSTRAINT public documento_cnh fk_pessoa_id postgres
+5535; 2606 29056 FK CONSTRAINT public documento_ctps fk_pessoa_id postgres
+5536; 2606 29061 FK CONSTRAINT public documento_identidade_profissional fk_pessoa_id postgres
+5537; 2606 29066 FK CONSTRAINT public documento_reservista fk_pessoa_id postgres
+5538; 2606 29071 FK CONSTRAINT public documento_rg fk_pessoa_id postgres
+5539; 2606 29076 FK CONSTRAINT public documento_titulo_eleitor fk_pessoa_id postgres
+5451; 2606 29081 FK CONSTRAINT public pessoa fk_raca_cor postgres
+5548; 2606 29086 FK CONSTRAINT public empresa_responsavel fk_responsavel postgres
+5543; 2606 29091 FK CONSTRAINT public empresa_old fk_responsavel_empresa_old postgres
+5551; 2606 29096 FK CONSTRAINT public empresa_responsavel_old fk_responsavel_old postgres
+5544; 2606 29101 FK CONSTRAINT public empresa_old fk_responsavel_rh_old postgres
+5563; 2606 29106 FK CONSTRAINT public plano_saude fk_rubrica_desconto postgres
+5452; 2606 29111 FK CONSTRAINT public pessoa fk_sexo postgres
+5533; 2606 29116 FK CONSTRAINT public conta_bancaria fk_tipo postgres
+5453; 2606 29121 FK CONSTRAINT public pessoa fk_tipo_condicao_ingresso_imigrante postgres
+5454; 2606 29126 FK CONSTRAINT public pessoa fk_tipo_condicao_ingresso_imigrante_id postgres
+5556; 2606 29131 FK CONSTRAINT public pessoa_contato fk_tipo_contato postgres
+5530; 2606 29136 FK CONSTRAINT public anexo fk_tipo_documento postgres
+5549; 2606 29141 FK CONSTRAINT public empresa_responsavel fk_tipo_empresa_resposavel postgres
+5552; 2606 29146 FK CONSTRAINT public empresa_responsavel_old fk_tipo_empresa_resposavel_old postgres
+5455; 2606 29151 FK CONSTRAINT public pessoa fk_tipo_sanguineo postgres
+5456; 2606 29156 FK CONSTRAINT public pessoa fk_tipo_tempo_residencia_imigrante postgres
+5457; 2606 29161 FK CONSTRAINT public pessoa fk_tipo_tempo_residencia_imigrante_id postgres
+5564; 2606 29166 FK CONSTRAINT rescisao rescisao fk_folha postgres
+5565; 2606 29171 FK CONSTRAINT rescisao rescisao fk_vinculo_funcional postgres
+5568; 2606 29176 FK CONSTRAINT seguranca permissao fk_grupo_permissao postgres
+5569; 2606 29181 FK CONSTRAINT seguranca permissao_rel_perfil fk_perfil postgres
+5566; 2606 29186 FK CONSTRAINT seguranca perfil_rel_usuario fk_perfil postgres
+5570; 2606 29191 FK CONSTRAINT seguranca permissao_rel_perfil fk_permissao postgres
+5567; 2606 29196 FK CONSTRAINT seguranca perfil_rel_usuario fk_usuario postgres
+5575; 2606 29201 FK CONSTRAINT setor unidade fk_endereco postgres
+5408; 2606 29206 FK CONSTRAINT setor setor fk_niveil_hierarquico postgres
+5573; 2606 29211 FK CONSTRAINT setor setor_rel_unidade fk_setor postgres
+5571; 2606 29216 FK CONSTRAINT setor setor_contato fk_setor postgres
+5409; 2606 29221 FK CONSTRAINT setor setor fk_superior postgres
+5572; 2606 29226 FK CONSTRAINT setor setor_contato fk_tipo_contato postgres
+5410; 2606 29231 FK CONSTRAINT setor setor fk_tipo_setor postgres
+5574; 2606 29236 FK CONSTRAINT setor setor_rel_unidade fk_unidade postgres
+5639; 2606 29241 FK CONSTRAINT vinculo vinculo_funcional_adicional adicional_tipo_fkey postgres
+5641; 2606 29246 FK CONSTRAINT vinculo vinculo_funcional_gratificacoes cargo_fkey postgres
+5644; 2606 29251 FK CONSTRAINT vinculo vinculo_funcional_incorporacoes cargo_fkey postgres
+5619; 2606 29256 FK CONSTRAINT vinculo incorporacoes_tipo evento_financeiro_fkey postgres
+5579; 2606 29261 FK CONSTRAINT vinculo afastamento_configuracao fk_afastamento_tipo postgres
+5610; 2606 29266 FK CONSTRAINT vinculo estagio fk_agente_integrador postgres
+5600; 2606 29271 FK CONSTRAINT vinculo credito_para_terceiro_anexo fk_anexo postgres
+5587; 2606 29276 FK CONSTRAINT vinculo auxilio_saude fk_anexo_contrato_plano postgres
+5588; 2606 29281 FK CONSTRAINT vinculo auxilio_saude fk_anexo_form_solicitacao postgres
+5585; 2606 29286 FK CONSTRAINT vinculo anotacao fk_anotacao_tipo postgres
+5620; 2606 29291 FK CONSTRAINT vinculo informacao_curricular fk_area postgres
+5611; 2606 29296 FK CONSTRAINT vinculo estagio fk_area_atuacao postgres
+5621; 2606 29301 FK CONSTRAINT vinculo informacao_curricular fk_arquivo_propriedade postgres
+5583; 2606 29306 FK CONSTRAINT vinculo anexo fk_arquivo_propriedade postgres
+5458; 2606 29311 FK CONSTRAINT vinculo vinculo_cargo fk_cargo postgres
+5463; 2606 29316 FK CONSTRAINT vinculo vinculo_funcional fk_cargo_vinculo postgres
+5593; 2606 29321 FK CONSTRAINT vinculo cedencia fk_categoria_trabalhador postgres
+5594; 2606 29326 FK CONSTRAINT vinculo cedencia fk_categoria_trabalhador_origem postgres
+5464; 2606 29331 FK CONSTRAINT vinculo vinculo_funcional fk_conta postgres
+5624; 2606 29336 FK CONSTRAINT vinculo pensao fk_conta_bancaria postgres
+5597; 2606 29341 FK CONSTRAINT vinculo credito_para_terceiro fk_conta_bancaria postgres
+5602; 2606 29346 FK CONSTRAINT vinculo credito_para_terceiro_incidencia fk_credito_para_terceiro postgres
+5601; 2606 29351 FK CONSTRAINT vinculo credito_para_terceiro_anexo fk_credito_para_terceiro postgres
+5604; 2606 29356 FK CONSTRAINT vinculo credito_para_terceiro_rel_folha_tipo fk_credito_para_terceiro_id postgres
+5598; 2606 29361 FK CONSTRAINT vinculo credito_para_terceiro fk_credor postgres
+5465; 2606 29366 FK CONSTRAINT vinculo vinculo_funcional fk_decimo_terceiro_tipo postgres
+5625; 2606 29371 FK CONSTRAINT vinculo pensao fk_endereco postgres
+5582; 2606 29376 FK CONSTRAINT vinculo afastamento_tipo fk_esocial_afastamento_temporario_tipo_id postgres
+5466; 2606 29381 FK CONSTRAINT vinculo vinculo_funcional fk_estagio postgres
+5580; 2606 29386 FK CONSTRAINT vinculo afastamento_configuracao fk_evento_desconto postgres
+5581; 2606 29391 FK CONSTRAINT vinculo afastamento_configuracao fk_evento_provento postgres
+5592; 2606 29396 FK CONSTRAINT vinculo ferias_gozo fk_ferias postgres
+5630; 2606 29401 FK CONSTRAINT vinculo pensao_rel_folha_tipo fk_folha_tipo postgres
+5605; 2606 29406 FK CONSTRAINT vinculo credito_para_terceiro_rel_folha_tipo fk_folha_tipo postgres
+5459; 2606 29411 FK CONSTRAINT vinculo vinculo_cargo fk_fonte_recurso postgres
+5612; 2606 29416 FK CONSTRAINT vinculo estagio fk_instituicao_ensino postgres
+5467; 2606 29421 FK CONSTRAINT vinculo vinculo_funcional fk_lotacao postgres
+5460; 2606 29426 FK CONSTRAINT vinculo vinculo_cargo fk_motivo_desligamento postgres
+5613; 2606 29431 FK CONSTRAINT vinculo estagio fk_natureza postgres
+5461; 2606 29436 FK CONSTRAINT vinculo vinculo_cargo fk_nivel postgres
+5622; 2606 29441 FK CONSTRAINT vinculo informacao_curricular fk_nivel postgres
+5631; 2606 29446 FK CONSTRAINT vinculo pensao_rel_folha_tipo fk_pensao postgres
+5635; 2606 29451 FK CONSTRAINT vinculo pensao_tipo_rel_incidencia fk_pensao_tipo postgres
+5626; 2606 29456 FK CONSTRAINT vinculo pensao fk_pensao_tipo postgres
+5468; 2606 29461 FK CONSTRAINT vinculo vinculo_funcional fk_pessoa postgres
+5607; 2606 29466 FK CONSTRAINT vinculo dependente fk_pessoa postgres
+5589; 2606 29471 FK CONSTRAINT vinculo auxilio_saude fk_plano_de_saude postgres
+5595; 2606 29476 FK CONSTRAINT vinculo cedencia fk_regime_previdenciario postgres
+5462; 2606 29481 FK CONSTRAINT vinculo vinculo_cargo fk_regime_previdenciario_fundo postgres
+5469; 2606 29486 FK CONSTRAINT vinculo vinculo_funcional fk_regime_trabalho postgres
+5470; 2606 29491 FK CONSTRAINT vinculo vinculo_funcional fk_regulamentacao_id postgres
+5627; 2606 29496 FK CONSTRAINT vinculo pensao fk_representante_legal postgres
+5628; 2606 29501 FK CONSTRAINT vinculo pensao fk_representante_legal_tipo_id postgres
+5608; 2606 29506 FK CONSTRAINT vinculo dependente fk_responsavel postgres
+5636; 2606 29511 FK CONSTRAINT vinculo pensao_tipo_rel_incidencia fk_rubrica postgres
+5603; 2606 29516 FK CONSTRAINT vinculo credito_para_terceiro_incidencia fk_rubrica postgres
+5632; 2606 29521 FK CONSTRAINT vinculo pensao_rel_folha_tipo fk_rubrica postgres
+5606; 2606 29526 FK CONSTRAINT vinculo credito_para_terceiro_rel_folha_tipo fk_rubrica postgres
+5616; 2606 29531 FK CONSTRAINT vinculo ferias_configuracao_desconto fk_rubrica_desconto postgres
+5617; 2606 29536 FK CONSTRAINT vinculo ferias_configuracao_desconto fk_rubrica_provento postgres
+5518; 2606 29541 FK CONSTRAINT vinculo lotacao fk_setor postgres
+5637; 2606 29546 FK CONSTRAINT vinculo substituicao fk_substituido postgres
+5638; 2606 29551 FK CONSTRAINT vinculo substituicao fk_substituto_vinculo postgres
+5614; 2606 29556 FK CONSTRAINT vinculo estagio fk_supervisor postgres
+5615; 2606 29561 FK CONSTRAINT vinculo estagio fk_tipo postgres
+5577; 2606 29566 FK CONSTRAINT vinculo afastamento fk_tipo postgres
+5609; 2606 29571 FK CONSTRAINT vinculo dependente fk_tipo_de_dependente_esocial postgres
+5584; 2606 29576 FK CONSTRAINT vinculo anexo fk_tipo_documento postgres
+5519; 2606 29581 FK CONSTRAINT vinculo lotacao fk_unidade postgres
+5578; 2606 29586 FK CONSTRAINT vinculo afastamento fk_vinculo postgres
+5591; 2606 29591 FK CONSTRAINT vinculo ferias fk_vinculo postgres
+5520; 2606 29596 FK CONSTRAINT vinculo lotacao fk_vinculo_funcional postgres
+5596; 2606 29601 FK CONSTRAINT vinculo cedencia fk_vinculo_funcional postgres
+5623; 2606 29606 FK CONSTRAINT vinculo informacao_curricular fk_vinculo_funcional postgres
+5629; 2606 29611 FK CONSTRAINT vinculo pensao fk_vinculo_funcional postgres
+5599; 2606 29616 FK CONSTRAINT vinculo credito_para_terceiro fk_vinculo_funcional postgres
+5590; 2606 29621 FK CONSTRAINT vinculo auxilio_saude fk_vinculo_funcional postgres
+5586; 2606 29626 FK CONSTRAINT vinculo anotacao fk_vinculo_funcional postgres
+5642; 2606 29631 FK CONSTRAINT vinculo vinculo_funcional_gratificacoes gratificacao_tipo_fkey postgres
+5645; 2606 29636 FK CONSTRAINT vinculo vinculo_funcional_incorporacoes incorporacao_tipo_fkey postgres
+5646; 2606 29641 FK CONSTRAINT vinculo vinculo_funcional_incorporacoes nivel_fkey postgres
+5633; 2606 29646 FK CONSTRAINT vinculo pensao_rel_pensionista pensao_rel_pensionista_pensao_id_fkey postgres
+5634; 2606 29651 FK CONSTRAINT vinculo pensao_rel_pensionista pensao_rel_pensionista_pessoa_id_fkey postgres
+5576; 2606 29656 FK CONSTRAINT vinculo adicional_tipo rubrica_fkey postgres
+5618; 2606 29661 FK CONSTRAINT vinculo gratificacoes_tipo rubrica_fkey postgres
+5640; 2606 29666 FK CONSTRAINT vinculo vinculo_funcional_adicional vinculo_funcional_fkey postgres
+5643; 2606 29671 FK CONSTRAINT vinculo vinculo_funcional_gratificacoes vinculo_funcional_fkey postgres
+5647; 2606 29676 FK CONSTRAINT vinculo vinculo_funcional_incorporacoes vinculo_funcional_fkey postgres
