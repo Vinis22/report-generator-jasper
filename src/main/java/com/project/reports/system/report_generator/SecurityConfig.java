@@ -12,10 +12,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Desativa CSRF para endpoints REST
+                .csrf(csrf -> csrf.disable()) // Disable CSRF for REST endpoints
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/reports/**").permitAll() // Permite acesso público aos endpoints da API
-                        .anyRequest().authenticated() // Exige autenticação para outras rotas
+                        .requestMatchers("/api/reports/**").permitAll() // Allows public access to API endpoints
+                        .anyRequest().authenticated() // Require authentication for other routes
                 );
         return http.build();
     }
