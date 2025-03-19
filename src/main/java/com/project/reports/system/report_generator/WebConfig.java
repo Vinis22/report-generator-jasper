@@ -13,8 +13,8 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // Permite todos os endpoints
-                        .allowedOrigins("*") // Permite todas as origens (ou especifique uma lista de domínios)
+                registry.addMapping("/**") // Allows all endpoints
+                        .allowedOrigins("*") // Allow all origins (or specify a list of domains)
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
             }
         };
