@@ -1,20 +1,13 @@
-FROM openjdk:17-jdk-alpine
-
-# Instalar pacotes necessários para fontes e biblioteca gráfica
-RUN apk update && apk add --no-cache \
-    fontconfig \
-    ttf-dejavu \
-    freetype \
-    libx11
-
-# Diretório onde a aplicação será copiada
+# Build stage
+FROM maven:3.8.6-eclipse-temurin-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copiar o arquivo .jar para o container
-COPY target/gerador-relatorios-0.0.1-SNAPSHOT.jar /app/gerador-relatorios.jar
-
-# Definir a variável de ambiente para o perfil ativo (opcional)
+# Runtime stage
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/report-generator-0.0.1-SNAPSHOT.jar /app/report-generator.jar
 ENV SPRING_PROFILES_ACTIVE=prod
-
-# Comando para rodar a aplicação
-ENTRYPOINT ["java", "-jar", "/app/gerador-relatorios.jar"]
+ENTRYPOINT ["java", "-jar", "/app/report-generator.jar"]

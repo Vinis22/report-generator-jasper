@@ -1,12 +1,12 @@
-package com.projeto.relatorio;
+package com.project.reports;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GeradorRelatoriosApplication {
+public class ReportGeneratorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GeradorRelatoriosApplication.class, args);
+        SpringApplication.run(ReportGeneratorApplication.class, args);
     }
 }

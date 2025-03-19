@@ -1,15 +1,21 @@
-version: '3.8'
 services:
   db:
     image: postgres:latest
     environment:
-      POSTGRES_PASSWORD: admin
-      POSTGRES_USER: postgres
-      POSTGRES_DB: pretium3test
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     networks:
-      - minha_rede
+      - my_network
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DATABASE_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   api:
     build:
@@ -18,16 +24,20 @@ services:
     environment:
       DATABASE_HOST: db
       DATABASE_PORT: 5432
-      DATABASE_NAME: pretium3test
-      DATABASE_USER: postgres
-      DATABASE_PASSWORD: admin
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
-      - minha_rede
+      - my_network
     ports:
       - "8080:8080"
 
 networks:
-  minha_rede:
+  my_network:
     driver: bridge
+
+volumes:
+  postgres_data:

@@ -3,19 +3,19 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Configuração de informações básicas do projeto -->
+	<!-- Configuração básica do projeto -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.1</version>
-		<relativePath/> <!-- Lookup para o parent do Spring Boot -->
+		<relativePath/> <!-- Lookup para o Spring Boot parent -->
 	</parent>
 
 	<groupId>com.microservico</groupId>
-	<artifactId>gerador-relatorios</artifactId>
+	<artifactId>report-generator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gerador-relatorios</name>
-	<description>Microserviço para geração de relatórios JasperReports</description>
+	<name>report-generator</name>
+	<description>A Spring Boot microservice for generating PDF reports using JasperReports.</description>
 
 	<properties>
 		<java.version>17</java.version> <!-- Versão do Java -->
@@ -30,14 +30,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
@@ -48,19 +40,31 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Driver PostgreSQL -->
+		<!-- Dependência do Spring Data JPA -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.6.0</version>
-			<scope>runtime</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- Lombok para simplificação de código (getters, setters, etc.) -->
+		<!-- PostgreSQL Driver -->
+<!--		<dependency>-->
+<!--			<groupId>org.postgresql</groupId>-->
+<!--			<artifactId>postgresql</artifactId>-->
+<!--			<version>42.6.0</version>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
+
+		<!-- H2 para testes (banco de dados em memória) -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Lombok para simplificação de código -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.36</version>
 			<scope>provided</scope>
 		</dependency>
 
