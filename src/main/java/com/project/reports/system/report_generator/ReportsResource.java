@@ -22,13 +22,13 @@ public class ReportsResource {
             @RequestParam String reportPath,
             @RequestParam(required = false) Map<String, String> parameters) throws Exception {
 
-        // Converter os parâmetros de String para Object (se necessário)
+        // Convert String parameters to Object (if necessary)
         Map<String, Object> params = new HashMap<>();
         if (parameters != null) {
             params.putAll(parameters);
         }
 
-        // Chamar o serviço Jasper para gerar o relatório
+        // Call the Jasper service to generate the report
         byte[] pdfContent = jasperService.generatePdfReport(reportPath, params);
 
         return ResponseEntity.ok()
